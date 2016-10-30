@@ -1,0 +1,11 @@
+<div id="nav">
+	<ul>
+		{{form_start(form)}}
+		<li>Username{{form_widget(form.username)}}</li>
+		<li>Password{{form_widget(form.password)}}</li>
+		<li>{{form_widget(form.entrar)}}</li>
+		<li><a href="{{path('register')}}">Registrarse</a></li>
+		{{ form_end(form) }}
+	</ul>
+			
+</div>

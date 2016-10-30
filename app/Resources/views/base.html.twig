@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}descuentos-online.com{% endblock %}</title>
+        {% block stylesheets %}<link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}" />{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        
+    </head>
+    <body>
+    		<div id="contenedor">
+				<div id="logo">
+					<h1>descuentos-online.com</h1>
+				</div>
+				
+				
+					
+				{% if app.session.get('rol') is defined %}
+					{% if app.session.get('rol') == "user" %}
+						{% include "user_menu.html.twig" %}
+					{% elseif app.session.get('rol') == "admin"  %}
+						{% include "admin_menu.html.twig" %}
+					{% endif %}
+				{% else %}
+					{% include "guest_menu.html.twig" %}	
+				{% endif %}
+				
+				
+				
+        {% block body %}
+        
+        {% endblock %}
+        {% block javascripts %}{% endblock %}
+        	
+        		
+        </div>
+        <div id="footer">
+				</div>
+				
+        
+    </body>
+</html>

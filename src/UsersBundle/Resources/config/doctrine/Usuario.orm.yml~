@@ -1,0 +1,45 @@
+UsersBundle\Entity\Usuario:
+    type: entity
+    table: usuario
+    oneToMany:
+        pedido:
+            targetEntity: Pedido
+            mappedBy: usuario
+    repositoryClass: UsersBundle\Repository\UsuarioRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nombre:
+            type: string
+            length: '50'
+        apellidos:
+            type: string
+            length: '100'
+        direccion:
+            type: string
+            length: '100'
+        ciudad:
+            type: string
+            length: '100'
+        cp:
+            type: string
+            length: '50'
+        telefono:
+            type: string
+            length: '50'
+        email:
+            type: string
+            length: '100'
+        admin:
+            type: boolean
+        username:
+            type: string
+            length: '100'
+        password:
+            type: string
+            length: '100'
+    lifecycleCallbacks: {  }

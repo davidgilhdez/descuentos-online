@@ -1,0 +1,27 @@
+home:
+    path:     /
+    defaults: { _controller: UsersBundle:Users:index }
+    
+register:
+    path:     /register
+    defaults: { _controller: UsersBundle:Users:register }
+    
+login:
+    path:     /login
+    defaults: { _controller: UsersBundle:Users:login }
+    
+show_profile:
+    path:     /show-profile/{username}
+    defaults: { _controller: UsersBundle:Users:show }
+    
+edit_profile:
+    path:     /edit-profile/{username}
+    defaults: { _controller: UsersBundle:Users:edit }
+
+show_orders:
+    path:     /show-orders/{username}
+    defaults: { _controller: UsersBundle:Users:orders }
+    
+show_cart:
+    path:     /show-cart/{username}
+    defaults: { _controller: UsersBundle:Users:cart }

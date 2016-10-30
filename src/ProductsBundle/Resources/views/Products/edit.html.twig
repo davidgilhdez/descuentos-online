@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<h2> Editar Producto </h2>
+	
+	<div id="forms">
+	<ul>
+		{{form_start(form)}}
+
+		<li>Nombre</br>{{form_widget(form.nombre)}}</li>
+		<li>Descripción</br>{{form_widget(form.descripcion)}}</li>
+		<li>Precio</br>{{form_widget(form.precio)}}</li>
+		<li>Stock</br>{{form_widget(form.cantidad)}}</li>
+		<li>Descuento</br>{{form_widget(form.descuento)}}</li>
+		<li>Imagen</br>{{form_widget(form.imagen)}}</li>
+		</br>
+		<li>{{form_widget(form.nuevo_producto)}}</li>
+
+		{{ form_end(form) }}
+	</ul>	
+	</div>
+	<div class="clear"></div>
+
+{% endblock %}

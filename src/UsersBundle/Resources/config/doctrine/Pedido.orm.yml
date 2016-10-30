@@ -1,0 +1,28 @@
+UsersBundle\Entity\Pedido:
+    type: entity
+    table: pedido
+    manyToOne:
+        usuario:
+            targetEntity: Usuario
+            inversedBy: pedidos
+            joinColumn:
+                name: usuario_id
+                referencedColumnName: id
+            cascade: ["persist"]
+    oneToMany:
+        lineas_pedido:
+            targetEntity: Linea_pedido
+            mappedBy: pedido
+    repositoryClass: UsersBundle\Repository\PedidoRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        fecha:
+            type: datetime
+        importe:
+            type: float
+    lifecycleCallbacks: {  }

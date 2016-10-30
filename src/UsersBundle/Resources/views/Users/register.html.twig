@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<h2> Registro de Nuevo Usuario </h2>
+	
+	<div id="forms">
+	<ul>
+		{{form_start(form)}}
+		<li>Username</br>{{form_widget(form.username)}}</li>
+		<li>Password</br>{{form_widget(form.password)}}</li>
+		<li>Nombre</br>{{form_widget(form.nombre)}}</li>
+		<li>Apellidos</br>{{form_widget(form.apellidos)}}</li>
+		<li>Dirección</br>{{form_widget(form.direccion)}}</li>
+		<li>Población</br>{{form_widget(form.ciudad)}}</li>
+		<li>Código Postal</br>{{form_widget(form.cp)}}</li>
+		<li>Teléfono</br>{{form_widget(form.telefono)}}</li>
+		<li>Email</br>{{form_widget(form.email)}}</li>
+		</br>
+		<li>{{form_widget(form.nuevo_usuario)}}</li>
+
+		{{ form_end(form) }}
+	</ul>	
+	</div>
+	<div class="clear"></div>
+
+{% endblock %}
+

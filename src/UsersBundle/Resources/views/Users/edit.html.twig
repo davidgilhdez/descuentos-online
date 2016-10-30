@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h2> Editar Perfil </h2>
+
+	<div id="forms">
+	<ul>
+		{{form_start(form)}}
+		
+		<li>Nombre</br>{{form_widget(form.nombre)}}</li>
+		<li>Apellidos</br>{{form_widget(form.apellidos)}}</li>
+		<li>Dirección</br>{{form_widget(form.direccion)}}</li>
+		<li>Población</br>{{form_widget(form.ciudad)}}</li>
+		<li>Código Postal</br>{{form_widget(form.cp)}}</li>
+		<li>Teléfono</br>{{form_widget(form.telefono)}}</li>
+		<li>Email</br>{{form_widget(form.email)}}</li>
+		
+		</br>
+	</ul>	
+	
+	<h3> Cambiar Password </h3>
+	<ul>
+
+		<li>Password actual</br>{{form_widget(form.actual_password)}}</li>
+		<li>Nuevo password</br>{{form_widget(form.new_password)}}</li>
+		<li>Repite password</br>{{form_widget(form.new_password2)}}</li>
+		</br>
+		<li>{{form_widget(form.editar_perfil)}}</li>
+
+		{{ form_end(form) }}
+		
+	</ul>
+	
+	</div>
+	<div class="clear"></div>
+
+
+{% endblock %}

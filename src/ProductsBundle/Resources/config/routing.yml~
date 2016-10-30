@@ -1,0 +1,20 @@
+add_product:
+    path:     /add-product
+    defaults: { _controller: ProductsBundle:Products:addProduct }
+    
+edit_product:
+    path:     /edit-product/{id}
+    defaults: { _controller: ProductsBundle:Products:editProduct }
+
+show_product:
+    path:     /show-product/{id}
+    defaults: { _controller: ProductsBundle:Products:showProduct }
+    
+delete_product:
+    path:     /delete-product/{id}
+    defaults: { _controller: ProductsBundle:Products:deleteProduct }
+    
+manage_products:
+    path:     /manage-products/
+    defaults: { _controller: ProductsBundle:Products:manageProduct }
+    

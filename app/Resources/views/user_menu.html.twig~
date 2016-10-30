@@ -1,0 +1,16 @@
+<div id="nav">
+	<ul>
+		<li>
+			<div id="bienvenida">
+				Bienvenid@ {{app.session.get('username')}}
+			</div>				
+		</li>
+		<li><a href="{{path('show_profile',{username : app.session.get('username')})}}">Mi perfil</a></li>
+		<li><a href="{{path('show_orders',{username : app.session.get('username')})}}">Mis pedidos</a></li>
+		<li><a href="{{path('show_cart',{username : app.session.get('username')})}}">Mi carrito</a></li>
+	</ul>
+		
+	
+		
+			
+</div>

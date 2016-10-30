@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h2> Mis pedidos </h2>
+
+<div id="tabla">
+	<table>
+		<tr>
+			<th>Referencia</th>
+			<th>Fecha</th>
+			<th>Artículos</th>
+			<th>Importe</th>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>28-10-2016</td>
+			<td><a href="{{path('show_order_products',{id : '4'})}}">Ver productos</a></td>
+			<td>41.95€</td>
+		</tr>	
+		<tr>
+			<td>4</td>
+			<td>28-10-2016</td>
+			<td><a href="{{path('show_order_products',{id : '4'})}}">Ver productos</a></td>
+			<td>41.95€</td>
+		</tr>	
+	</table>		
+		
+</div>
+	
+		
+		
+
+{% endblock %}

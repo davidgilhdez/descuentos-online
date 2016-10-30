@@ -1,0 +1,9 @@
+products:
+    resource: "@ProductsBundle/Resources/config/routing.yml"
+    prefix:   /
+
+users:
+    resource: "@UsersBundle/Resources/config/routing.yml"
+    prefix:   /
+
+

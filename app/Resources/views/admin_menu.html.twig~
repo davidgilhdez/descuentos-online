@@ -1,0 +1,17 @@
+<div id="nav">
+	<div id="bienvenida">
+		Bienvenid@ {{app.session.get('username')}} (ADMINISTRADOR)
+	</div>
+	
+	<div id="menu_derecho">
+	<ul>
+		<li><a href="{{path('show_profile',{username : app.session.get('username')})}}">Nuevo producto</a></li>
+		<li><a href="{{path('show_orders',{username : app.session.get('username')})}}">Gestionar productos</a></li>
+		<li><a href="{{path('show_cart',{username : app.session.get('username')})}}">Mi carrito</a></li>
+	</ul>
+	</div>
+		
+	
+		
+			
+</div>

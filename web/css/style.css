@@ -1,0 +1,317 @@
+*
+{
+	padding:0;
+	margin:0;
+}
+
+.clear
+{
+	clear:both;
+}
+
+html,body{
+height:100%;
+background-color:darkblue;
+}
+
+
+#contenedor
+{
+	width:90%;
+	margin:auto;
+	overflow:hidden;
+	min-height:100%;
+	padding-bottom:30px;
+	background-color:white;
+	
+	
+	
+	
+}
+
+ul{
+	font-size:16px;
+	color:darkblue;
+	list-style:none;
+}
+
+ul li{
+	margin:10px;
+}
+
+a{
+	text-decoration:none;
+}
+
+a:hover{
+	text-shadow: -1px -1px 1px blue;
+}
+
+a:visited{
+	color:darkblue;
+}
+
+
+/************************************** LOGO *************************************************/
+
+#logo
+{
+	width:100%;
+	height:200px;
+	text-align:center;
+	background-color:#819FF7;
+	
+}
+
+#logo h1
+{
+	padding-top:70px;
+	color:white;
+	letter-spacing:10px;
+	font-size:60px;
+	text-shadow: -4px -4px 1px darkblue;
+	font-family:Verdana;
+	font-weight:bold;
+	
+}
+
+/************************************** BARRA DE NAVEGACIÓN *************************************************/
+
+#nav
+{
+	width:100%;
+	height:50px;
+	background-color:#CECEF6;
+	border-top:solid 5px darkblue;
+	border-bottom:solid 5px darkblue;
+}
+
+#nav ul
+{
+	list-style:none;
+	text-align:center;
+	padding-top:13px;
+}
+
+#nav ul li
+{
+	display:inline;
+	font-size:16px;
+	margin:30px;
+	color:darkblue;
+}
+
+#nav ul li input
+{
+	margin-left:5px;
+}
+
+#nav ul li button
+{
+	margin-left:-45px;
+	color:darkblue;
+}
+
+#nav ul li a
+{
+	margin-left:-25px;
+}
+
+#bienvenida{	
+	width:30%;
+	float:left;
+	margin:5px;
+}
+
+#menu_derecho{	
+	width:69%;
+	float:left;
+}
+
+/************************************** ENCABEZADOS *************************************************/
+
+h2
+{
+	margin-top:30px;
+	font-size:30px;
+	font-family:Verdana;
+	color:#2E64FE;
+	text-align:center;
+}
+
+h3
+{
+	font-size:20px;
+	font-family:Verdana;
+	color:#819FF7;
+	text-align:center;
+	margin-bottom:70px;
+}
+
+/************************************** FORMULARIOS *************************************************/
+
+#forms{
+	width:35%;
+	margin:auto;
+	margin-top:30px;
+}
+
+#forms ul li button{
+	color:darkblue;
+	float:right;
+	margin-top:-10px;
+	margin-right:50px;
+}
+
+#forms h3{
+	font-size:16px;
+	color:darkblue;
+	margin-bottom:20px;
+
+}
+
+
+/************************************** VER PERFIL *************************************************/
+
+#ver_perfil{
+	width:60%;
+	margin:auto;
+	margin-top:30px;
+}
+
+#ver_perfil .texto{
+	color:black;
+	font-size:12px;
+	margin-left:15px;
+}
+
+#ver_perfil a{
+	float:right;
+	margin-right:90px;
+}
+
+/************************************** TABLA PEDIDOS, CARRITO *************************************************/
+
+#tabla{
+	width:80%;
+	margin:auto;
+	text-align:center;
+}
+
+table{
+	margin-top:30px;
+	width:100%;
+	border:1px solid #CEF6F5;
+	background-color:darkblue;
+}
+
+th{
+	color:darkblue;
+	font-weight:bold;
+	font-size:16px;
+	height:50px;
+	border:1px solid #CEF6F5;
+	background-color:white;
+	
+}
+
+td{
+	
+	color:black;
+	font-size:13px;
+	border:1px solid #CEF6F5;
+	background-color:white;
+}
+
+.comprar{
+	width:150px;
+	color:white;
+	font-size:20px;
+	background:#DBA901;
+	text-align:center;
+	margin-top:10px;
+	margin-left:25px;
+	padding:5px;
+	font-family:Verdana;
+	float:right;
+	font-weight:bold;
+}
+
+.comprar #seguir{
+	font-size:12px;
+}
+
+/************************************** VER PRODUCTO *************************************************/
+
+#show_product{
+	width:90%;
+	margin:auto;
+}
+
+#show_product #product_img, #show_product #product_info{
+	float:left;
+	width:50%;
+}
+
+#product_price{
+	text-align:center;
+}
+
+#product_info h2{
+	margin-bottom:20px;
+}
+.precio_original
+{
+	text-decoration: line-through;
+	color:grey;
+	font-size:20px;
+	margin-left:10px;
+}
+
+.precio_descuento
+{
+	font-size:35px;
+	margin-left:10px;
+	font-weight:bold;
+	text-shadow: -1px -1px 1px blue;
+}
+
+.descuento
+{
+	font-size:25px;
+	color:red;
+	font-weight:bold;
+	margin-left:10px;
+}
+
+#description{
+	font-size:14px;
+	font-family:Arial;
+	border-top:2px solid darkblue;
+	margin-top:25px;
+	padding-top:10px;
+}
+/************************************** FOOTER *************************************************/
+
+#footer
+{
+	
+	
+	height:50px;
+	border-top:solid 5px darkblue;
+	background-color:#819FF7;
+  	width:90%; 
+  	margin:auto;
+	 
+	 position: relative;
+
+	
+	 
+	
+}
+
+
+
+
+
+

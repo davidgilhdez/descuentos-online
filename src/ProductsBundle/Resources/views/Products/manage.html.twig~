@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h2> Gestión de Productos </h2>
+
+	<div id="tabla">
+	<table>
+		<tr>
+			<th>Código</th>
+			<th>Artículo</th>
+			<th>Stock</th>
+			<th>Precio</th>
+			<th>Descuento</th>
+			<th colspan=3>Acciones</th>
+			
+			
+			
+		</tr>
+		<tr>
+			<td> 4 </td>
+			<td> Asus Dual GeForce GTX 1070 OC 8GB GDDR5</td>
+			<td>36 </td>
+			<td>41.95€ </td>
+			<td> 15% </td>
+			<td style="color:white;background:brown;"> Editar</td>
+			<td style="color:white;background:red;"> Eliminar</td>
+			<td style="color:white;background:green;"> Vender</td>
+		
+		</tr>
+		<tr>
+			<td> 4 </td>
+			<td> Asus Dual GeForce GTX 1070 OC 8GB GDDR5</td>
+			<td>36 </td>
+			<td>41.95€ </td>
+			<td> 15% </td>
+			<td style="color:white;background:brown;"> Editar</td>
+			<td style="color:white;background:red;"> Eliminar</td>
+			
+		
+		</tr>
+		
+	</table>
+	</div>
+	
+{% endblock %}

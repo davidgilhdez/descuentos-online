@@ -1,0 +1,33 @@
+ProductsBundle\Entity\Producto:
+    type: entity
+    table: producto
+    oneToOne:
+        linea_pedido:
+            targetEntity: UsersBundle\Entity\Linea_pedido
+            inversedBy: producto
+            joinColumn:
+                name: linea_pedido_id
+                referencedColumnName: id
+
+    repositoryClass: ProductsBundle\Repository\ProductoRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nombre:
+            type: string
+            length: '100'
+        descripcion:
+            type: text
+        precio:
+            type: float
+        cantidad:
+            type: integer
+        vendiendo:
+            type: boolean
+        descuento:
+            type: integer
+    lifecycleCallbacks: {  }

@@ -1,0 +1,16 @@
+<div id="nav">
+
+	{% if app.session is defined %}
+	<ul>
+		<li>Mi perfil</li>	
+		<li>Ver pedidos</li>
+		<li>Ver carrito</li>
+	</ul>
+	{% else %}
+	<ul>
+		<li>Login</li>	
+		<li>Password</li>
+	</ul>
+	{% endif %}
+			
+</div>
