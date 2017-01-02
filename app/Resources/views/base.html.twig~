@@ -30,7 +30,7 @@
 				{% if app.session.flashbag.has('error_login') %}
 					{% for flash_message in app.session.flashbag.get('error_login') %}
 						<div id="error">			
-							{{ flash_message|trans({},'security') }}	
+							{{ flash_message|trans({},'sms') }}	
 						</div>
 					{% endfor %}
 				{% endif %}
