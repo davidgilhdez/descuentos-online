@@ -1,0 +1,27 @@
+namespace UsersBundle\DataFixtures\ORM;
+
+use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\Persistence\ObjectManager;
+use UsersBundle\Entity\Usuario;
+
+class LoadUserData implements FixtureInterface
+{
+    
+    public function load(ObjectManager $manager)
+    {
+        $user = new Usuario();
+        
+        $user->setUsername('Juanito');
+        $user->setPassword('juanito');
+        $user->setNombre('Juan');
+        $user->setApellidos('García Perez');
+        $user->setDireccion('C/ Albondiga nº1');
+        $user->setCiudad('Compostela');
+        $user->setCp('12345');
+        $user->setTelefono('123456789');
+        $user->setEmail('juan@gmail.com');
+        
+        $manager->persist($user);
+        $manager->flush();
+			
+	}

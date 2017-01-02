@@ -1,13 +1,19 @@
 <div id="nav">
 	<div id="bienvenida">
-		Bienvenid@ {{app.session.get('username')}}
+		{% trans from "home" %}Bienvenid@ {% endtrans %} {{app.session.get('username')}}
 	</div>
 	
 	<div id="menu_derecho">
 	<ul>
-		<li><a href="{{path('show_profile',{username : app.session.get('username')})}}">Mi perfil</a></li>
-		<li><a href="{{path('show_orders',{username : app.session.get('username')})}}">Mis pedidos</a></li>
-		<li><a href="{{path('show_cart',{username : app.session.get('username')})}}">Mi carrito</a></li>
+		<li><a href="{{path('show_profile',{username : app.session.get('username')})}}">
+		{% trans from "user_menu" %}Mi perfil{% endtrans %}</a></li>
+		<li><a href="{{path('show_orders',{username : app.session.get('username')})}}">
+		{% trans from "user_menu" %}Mis pedidos{% endtrans %}</a></li>
+		<li><a href="{{path('show_cart',{username : app.session.get('username')})}}">
+		{% trans from "user_menu" %}Mi carrito{% endtrans %}</a></li>
+		<li><a href="{{path('returns',{username : app.session.get('username')})}}">
+		{% trans from "user_menu" %}Devoluciones{% endtrans %}</a></li>
+		<li><a href="{{path('logout')}}">{% trans from "home" %} Cerrar sesión{% endtrans %}</a></li>
 	</ul>
 	</div>
 		

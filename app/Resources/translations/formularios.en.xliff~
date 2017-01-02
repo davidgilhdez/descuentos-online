@@ -1,0 +1,184 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="es" datatype="plaintext" original="file.ext">
+            <body>
+            <trans-unit id="m_registro">
+                <source>Registro de Nuevo Usuario</source>
+                <target>New User Registration</target>
+            </trans-unit>
+            <trans-unit id="m_perfil">
+                <source>Mi Perfil</source>
+                <target>My Profile</target>
+            </trans-unit>
+            <trans-unit id="m_editaperfil">
+                <source>Editar Perfil</source>
+                <target>Edit Profile</target>
+            </trans-unit>
+            <trans-unit id="m_cambiarpass">
+                <source>Cambiar Password</source>
+                <target>Change Password</target>
+            </trans-unit>
+            <trans-unit id="m_modusers">
+                <source>Modificar Usuarios</source>
+                <target>Modify Users</target>
+            </trans-unit>
+            <trans-unit id="m_nuevoproducto">
+                <source>Nuevo Producto</source>
+                <target>New Product</target>
+            </trans-unit>
+            <trans-unit id="m_editarproducto">
+                <source>Editar Producto</source>
+                <target>Edit Product</target>
+            </trans-unit>
+            <trans-unit id="m_devolver_producto">
+                <source>Devolver Producto</source>
+                <target>Return Product</target>
+            </trans-unit>
+            
+            
+            <trans-unit id="repite">
+                <source>Repite</source>
+                <target>Repeat</target>
+            </trans-unit>
+            <trans-unit id="nombre">
+                <source>Nombre</source>
+                <target>First Name</target>
+            </trans-unit>
+            <trans-unit id="apellidos">
+                <source>Apellidos</source>
+                <target>Last Name</target>
+            </trans-unit>
+            <trans-unit id="dire">
+                <source>Dirección</source>
+                <target>Address</target>
+            </trans-unit>
+            <trans-unit id="poblacion">
+                <source>Población</source>
+                <target>City/Town</target>
+            </trans-unit>
+            <trans-unit id="cp">
+                <source>Código Postal</source>
+                <target>Zip Code</target>
+            </trans-unit>
+            <trans-unit id="telefono">
+                <source>Teléfono</source>
+                <target>Phone Number</target>
+            </trans-unit>
+            <trans-unit id="nuevo_usuario">
+                <source>Nuevo usuario</source>
+                <target>New user</target>
+            </trans-unit>
+            
+            
+            <trans-unit id="cambiar">
+                <source>Cambiar</source>
+                <target>Change</target>
+            </trans-unit>
+            <trans-unit id="editarp">
+                <source>Editar perfil</source>
+                <target>Edit profile</target>
+            </trans-unit>
+            
+            
+     			
+            <trans-unit id="cambiarpass">
+                <source>Cambiar Password</source>
+                <target>Change Password</target>
+            </trans-unit>
+            <trans-unit id="actual_pass">
+                <source>Password actual</source>
+                <target>Actual password</target>
+            </trans-unit>
+            <trans-unit id="new_pass">
+                <source>Nuevo</source>
+                <target>New</target>
+            </trans-unit>
+            <trans-unit id="btn_cambiarpass">
+                <source>Cambiar password</source>
+                <target>Change password</target>
+            </trans-unit>
+            <trans-unit id="btn_modificar">
+                <source>Modificar</source>
+                <target>Modify</target>
+            </trans-unit>
+            <trans-unit id="btn_inactivo">
+                <source>Marcar como inactivo</source>
+                <target>Mark as inactive</target>
+            </trans-unit>
+            
+            
+            
+            <trans-unit id="descripcion">
+                <source>Descripción</source>
+                <target>Description</target>
+            </trans-unit>
+            <trans-unit id="precio">
+                <source>Precio</source>
+                <target>Price</target>
+            </trans-unit>
+            <trans-unit id="descuento">
+                <source>Descuento</source>
+                <target>Discount</target>
+            </trans-unit>
+            <trans-unit id="imagen">
+                <source>Imagen</source>
+                <target>Image</target>
+            </trans-unit>
+            <trans-unit id="examinar">
+                <source>Examinar...</source>
+                <target>Search...</target>
+            </trans-unit>
+            <trans-unit id="archivo">
+                <source>No se ha seleccionado ningún archivo.</source>
+                <target>No file selected</target>
+            </trans-unit>
+            <trans-unit id="btn_nuevoproducto">
+                <source>Nuevo producto</source>
+                <target>New product</target>
+            </trans-unit>
+            <trans-unit id="btn_editarproducto">
+                <source>Editar producto</source>
+                <target>Edit product</target>
+            </trans-unit>
+            
+            
+            
+            <trans-unit id="disponibles">
+                <source>Unidades disponibles</source>
+                <target>Available units</target>
+            </trans-unit>
+            <trans-unit id="al_carrito">
+                <source>Añadir al carrito</source>
+                <target>Add to cart</target>
+            </trans-unit>
+            <trans-unit id="desc_producto">
+                <source>Descripción del producto</source>
+                <target>Product description</target>
+            </trans-unit>
+            
+             <trans-unit id="cantidad">
+                <source>Cantidad</source>
+                <target>Quantity</target>
+            </trans-unit>
+            <trans-unit id="deseo">
+                <source>Deseo</source>
+                <target>Wish</target>
+            </trans-unit>
+            <trans-unit id="observaciones">
+                <source>Observaciones</source>
+                <target>Comments</target>
+            </trans-unit>
+            <trans-unit id="btn_devolver">
+                <source>Devolver</source>
+                <target>Return</target>
+            </trans-unit>
+            <trans-unit id="reemplazo">
+                <source>Reemplazo</source>
+                <target>Replacement</target>
+            </trans-unit>
+            
+            
+
+        </body>
+    </file>
+</xliff>

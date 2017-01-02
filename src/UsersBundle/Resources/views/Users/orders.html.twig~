@@ -2,30 +2,41 @@
 
 {% block body %}
 
-<h2> Mis pedidos </h2>
+<h2> {% trans from "tablas" %}Mis Pedidos{% endtrans %} </h2>
 
 <div id="tabla">
+{% if pedidos == null %}
+<h4>No has realizado ningún pedido</h4>
+{% else %}
+
 	<table>
 		<tr>
-			<th>Referencia</th>
-			<th>Fecha</th>
-			<th>Artículos</th>
-			<th>Importe</th>
+			<th>{% trans from "tablas" %}Referencia{% endtrans %}</th>
+			<th>{% trans from "tablas" %}Fecha{% endtrans %}</th>
+			<th>{% trans from "tablas" %}Artículos{% endtrans %}</th>
+			<th>{% trans from "tablas" %}Importe{% endtrans %}</th>
 		</tr>
-		<tr>
-			<td>4</td>
-			<td>28-10-2016</td>
-			<td><a href="{{path('show_order_products',{id : '4'})}}">Ver productos</a></td>
-			<td>41.95€</td>
-		</tr>	
-		<tr>
-			<td>4</td>
-			<td>28-10-2016</td>
-			<td><a href="{{path('show_order_products',{id : '4'})}}">Ver productos</a></td>
-			<td>41.95€</td>
-		</tr>	
-	</table>		
 		
+			{% for pedido in pedidos %}
+			{% if pedido.importe != 0 %}
+		<tr>
+			
+				<td>{{pedido.id}} 
+				{% if pedido.getIsdevolucion %}
+				{% trans from "tablas" %}(Reemplazo){% endtrans %}
+				{% endif %}
+				</td>
+				<td>{{pedido.fecha}}</td>
+				<td><a href="{{path('show_order_products',{username: app.session.get('username'), id : pedido.id})}}">
+				{% trans from "tablas" %}Ver productos{% endtrans %}</a></td>
+				<td>{{pedido.importe}} €</td>
+				
+		</tr>
+			{% endif %}
+			{% endfor %}
+			
+	</table>		
+{% endif %}
 </div>
 	
 		

@@ -1,1 +1,40 @@
-Página de editar productos
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<h2> {% trans from "formularios" %}Editar Producto {% endtrans %}</h2>
+	
+	<div id="forms">
+	<div id="imgedit">
+	<img src="{{producto.imagen}}" width=150px heigth=150px>
+	</div>
+	<ul>
+		{{form_start(form)}}
+
+		<li>{% trans from "tablas" %}Nombre{% endtrans %}</br>{{form_widget(form.nombre, {'attr':{'value':producto.nombre}})}}</li>
+		<div class="error_validacion">{{form_errors(form.nombre)}}</div>
+		<li>{% trans from "formularios" %}Precio{% endtrans %}</br>{{form_widget(form.precio, {'attr':{'value':producto.precio}})}}</li>
+		<div class="error_validacion">{{form_errors(form.precio)}}</div>
+		<li>Stock</br>{{form_widget(form.cantidad, {'attr':{'value':producto.cantidad}})}}</li>
+		<div class="error_validacion">{{form_errors(form.cantidad)}}</div>
+		<li>{% trans from "formularios" %}Descuento{% endtrans %}</br>{{form_widget(form.descuento, {'attr':{'value':producto.descuento}})}}</li>
+		<div class="error_validacion">{{form_errors(form.descuento)}}</div>
+		</br>
+		{% if app.request.locale == "es" %}
+		<li class="descripciones">{% trans from "formularios" %}Descripción{% endtrans %}</br>
+		{{form_widget(form.descripcion, {'attr':{'value':producto.descripcion}})}}</li></br>
+		<li class="descripciones">{% trans from "formularios" %}Descripción (Inglés){% endtrans %}</br>
+		{{form_widget(form.descripcion_en, {'attr':{'value':producto.getDescripcionEn}})}}</li>
+		{% else %}
+		<li class="descripciones"><div class="desc">Description</div></br>
+		{{form_widget(form.descripcion_en, {'attr':{'value':producto.getDescripcionEn()}})}}</li></br>
+		<li class="descripciones"><div class="desc">Description (Spanish)</div></br>
+		{{form_widget(form.descripcion, {'attr':{'value':producto.descripcion}})}}</li>
+		{% endif %}
+		<li>{{form_widget(form.editar_producto)}}</li>
+		</br></br>
+		{{ form_end(form) }}
+	</ul>	
+	</div>
+	<div class="clear"></div>
+
+{% endblock %}

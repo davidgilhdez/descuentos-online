@@ -1,18 +1,34 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-	<h2> Nuevo Producto </h2>
+	<h2> {% trans from "formularios" %}Nuevo Producto {% endtrans %}</h2>
 	
 	<div id="forms">
 	<ul>
+	
 		{{form_start(form)}}
 
-		<li>Nombre</br>{{form_widget(form.nombre)}}</li>
-		<li>Descripción</br>{{form_widget(form.descripcion)}}</li>
-		<li>Precio</br>{{form_widget(form.precio)}}</li>
+		<li>{% trans from "tablas" %}Nombre{% endtrans %}</br>{{form_widget(form.nombre)}}</li>
+		<div class="error_validacion">{{form_errors(form.nombre)}}</div>
+		<li>{% trans from "formularios" %}Precio{% endtrans %}</br>{{form_widget(form.precio)}}</li>
+		<div class="error_validacion">{{form_errors(form.precio)}}</div>
 		<li>Stock</br>{{form_widget(form.cantidad)}}</li>
-		<li>Descuento</br>{{form_widget(form.descuento)}}</li>
-		<li>Imagen</br>{{form_widget(form.imagen)}}</li>
+		<div class="error_validacion">{{form_errors(form.cantidad)}}</div>
+		<li>{% trans from "formularios" %}Descuento{% endtrans %}</br>{{form_widget(form.descuento)}}</li>
+		<div class="error_validacion">{{form_errors(form.descuento)}}</div>
+		<li>{% trans from "formularios" %}Imagen{% endtrans %}</br>{{form_widget(form.imagen)}}</li>
+		</br>
+		{% if app.request.locale == "es" %}
+		<li class="descripciones">{% trans from "formularios" %}Descripción{% endtrans %}</br>
+		{{form_widget(form.descripcion)}}</li></br>
+		<li class="descripciones">{% trans from "formularios" %}Descripción (Inglés){% endtrans %}</br>
+		{{form_widget(form.descripcion_en)}}</li>
+		{% else %}
+		<li class="descripciones"><div class="desc">Description</div></br>
+		{{form_widget(form.descripcion_en)}}</li></br>
+		<li class="descripciones"><div class="desc">Description (Spanish)</div></br>
+		{{form_widget(form.descripcion)}}</li>
+		{% endif %}
 		</br>
 		<li>{{form_widget(form.nuevo_producto)}}</li>
 

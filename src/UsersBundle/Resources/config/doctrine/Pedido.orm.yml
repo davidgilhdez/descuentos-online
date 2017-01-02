@@ -8,11 +8,12 @@ UsersBundle\Entity\Pedido:
             joinColumn:
                 name: usuario_id
                 referencedColumnName: id
-            cascade: ["persist"]
+            
     oneToMany:
         lineas_pedido:
             targetEntity: Linea_pedido
             mappedBy: pedido
+            
     repositoryClass: UsersBundle\Repository\PedidoRepository
     id:
         id:
@@ -23,6 +24,18 @@ UsersBundle\Entity\Pedido:
     fields:
         fecha:
             type: datetime
+        fechaprocesado:
+            type: datetime
+            nullable: true
+        estado:
+            type: string
+            length: '255'
         importe:
             type: float
+        isdevolucion:
+            type: boolean
+        etiqueta:
+            type: string
+            length: '255'
+            nullable: true
     lifecycleCallbacks: {  }

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h2> {% trans from "tablas" %}Pedidos Procesados{% endtrans %} </h2>
+
+<div id="tabla">
+
+	<table>
+		<tr>
+			<th>{% trans from "tablas" %}ID{% endtrans %}</th>
+			<th>{% trans from "tablas" %}Fecha{% endtrans %}</th>
+			<th>{% trans from "tablas" %}Usuario{% endtrans %}</th>
+			<th>{% trans from "tablas" %}Pedido{% endtrans %}</th>
+			<th>{% trans from "tablas" %}Etiqueta{% endtrans %}</th>
+		
+		</tr>
+		
+		{% for procesado in procesados %}
+		<tr>
+			
+				<td>{{procesado.id}} 
+				{% if procesado.isdevolucion %}
+				(Reemplazo)
+				{% endif %}</td>
+				<td>{{procesado.fechaprocesado}}</td>
+				<td>{{procesado.usuario.getNombre()}} {{procesado.usuario.getApellidos()}}</td>
+				<td><a href="{{path('show_order_products',{username: procesado.usuario.getUsername(),id:procesado.id})}}">Ver Pedido</a></td>
+				<td><a href="{{path('show_label',{id:procesado.id})}}" target='_blank'>Ver etiqueta</a></td>
+				
+		</tr>
+			
+		{% endfor %}
+			
+	</table>		
+		
+</div>
+	
+		
+		
+
+{% endblock %}

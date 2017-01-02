@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h2> {% trans from "tablas" %}Eliminar Producto {% endtrans %}</h2>
+
+	<div id="tabla">
+	<div id="imgdelete">
+	<img src="{{producto.imagen}}" width=150px heigth=150px>
+	</div>
+	<table>
+		<tr>
+			<th>{% trans from "tablas" %}Código{% endtrans %}</th>
+			<th>{% trans from "tablas" %}Artículo{% endtrans %}</th>
+			<th>Stock</th>
+			<th>{% trans from "formularios" %}Precio{% endtrans %}</th>
+			<th>{% trans from "formularios" %}Descuento{% endtrans %}</th>
+			
+		</tr>
+
+		
+		<tr>
+			<td> {{producto.id}} </td>
+			<td> {{producto.nombre}}</td>
+			<td> {{producto.cantidad}} </td>
+			<td> {{producto.precio}}€ </td>
+			<td> {{producto.descuento}}% </td>
+		</tr>
+		
+		
+	
+	</table>
+	{% if producto.cantidad != 0 %}
+	<h2> {% trans from "tablas" %}No puede eliminar un producto con stock {% endtrans %}</h2>
+	{% else %}
+	<h2> {% trans from "tablas" %}¿Está seguro de que quiere eliminar el producto? {% endtrans %}</h2>
+	<div class ="pregunta">
+	<a href="{{path('delete_product',{id : 0})}}">{% trans from "tablas" %}Si{% endtrans %}</a>
+	</div>
+	<div class ="pregunta">
+	<a href="{{path('manage_products')}}">No</a>
+	</div>
+	{% endif %}
+	</div>
+	
+{% endblock %}

@@ -12,15 +12,24 @@ web_profiler:
     intercept_redirects: false
 
 monolog:
+    channels: ['registro']
     handlers:
+        applog:
+            type: stream
+            path: "%kernel.logs_dir%/info.log"
+            level: info
+            channels: [registro]
         main:
             type: stream
             path: "%kernel.logs_dir%/%kernel.environment%.log"
             level: debug
-            channels: [!event]
+            channels: [!event,!registro]
         console:
             type:   console
             channels: [!event, !doctrine]
+        
+        
+            
         # uncomment to get logging in your browser
         # you may have to allow bigger header sizes in your Web server configuration
         #firephp:

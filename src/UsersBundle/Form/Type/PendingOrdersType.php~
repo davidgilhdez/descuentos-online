@@ -1,0 +1,25 @@
+<?php
+namespace UsersBundle\Form\Type;
+
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+
+class PendingOrdersType extends AbstractType
+{
+
+public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+		  $builder->add('asignar', 'choice', array(
+    'required'  => false,
+    'expanded' => true,
+    'multiple' => true,));	
+		 
+        $builder->add('preparar', 'submit',array('translation_domain'=>'formularios'));
+    }
+
+	public function getName()
+    {
+        return 'pending_orders';
+    }
+}
+

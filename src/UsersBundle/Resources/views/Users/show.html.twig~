@@ -2,20 +2,22 @@
 
 {% block body %}
 
-<h2> Mi Perfil </h2>
+<h2> {% trans from "formularios" %}Mi Perfil {% endtrans %}</h2>
 
 <div id="ver_perfil">
 	<ul>
-		<li>Username:<span class="texto">chipirone</span></li>
-		<li>Nombre:<span class="texto">David</span></li>
-		<li>Apellidos:<span class="texto">Gil Hernández</span></li>
-		<li>Dirección:<span class="texto">C/ Fernándo III nº2</span></li>
-		<li>Población:<span class="texto">Alhama de Murcia</span></li>
-		<li>Código Postal:<span class="texto">30840</span></li>
-		<li>Teléfono:<span class="texto">669086097</span></li>
-		<li>Email:<span class="texto">chipirone@gmail.com</span></li>
+		<li>Username:<span class="texto">{{user.username}}</span></li>
+		<li>{% trans from "formularios" %}Nombre{% endtrans %}:<span class="texto">{{user.nombre}}</span></li>
+		<li>{% trans from "formularios" %}Apellidos{% endtrans %}:<span class="texto">{{user.apellidos}}</span></li>
+		<li>{% trans from "formularios" %}Dirección{% endtrans %}:<span class="texto">{{user.direccion}}</span></li>
+		<li>{% trans from "formularios" %}Población{% endtrans %}:<span class="texto">{{user.ciudad}}</span></li>
+		<li>{% trans from "formularios" %}Código Postal{% endtrans %}:<span class="texto">{{user.cp}}</span></li>
+		<li>{% trans from "formularios" %}Teléfono{% endtrans %}:<span class="texto">{{user.telefono}}</span></li>
+		<li>Email:<span class="texto">{{user.email}}</span></li>
 		</br>
-		<li><a href="{{path('edit_profile',{username : 'david'})}}">Editar Perfil</a></li>
+		<li><a href="{{path('edit_profile',{username : user.username})}}">Editar Perfil</a></li>
+		<div class="clear"></div>
+		
 
 	</ul>	
 	</div>

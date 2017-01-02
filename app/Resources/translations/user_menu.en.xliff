@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="es" datatype="plaintext" original="file.ext">
+            <body>
+            
+            <trans-unit id="perfil">
+                <source>Mi perfil</source>
+                <target>My profile</target>
+            </trans-unit>
+            <trans-unit id="pedidos">
+                <source>Mis pedidos</source>
+                <target>My orders</target>
+            </trans-unit>
+            <trans-unit id="carrito">
+                <source>Mi carrito</source>
+                <target>My cart</target>
+            </trans-unit>
+            <trans-unit id="devoluciones">
+                <source>Devoluciones</source>
+                <target>Returns</target>
+            </trans-unit>
+             
+            
+         
+        </body>
+    </file>
+</xliff>

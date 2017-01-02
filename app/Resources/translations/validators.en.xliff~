@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="es" datatype="plaintext" original="file.ext">
+            <body>
+					<trans-unit id="v_email">
+                <source>Introduzca un email válido</source>
+                <target>Enter a valid email</target>
+            	</trans-unit>
+					<trans-unit id="v_usermin">
+                <source>El username debe tener un mínimo de 5 caracteres</source>
+                <target>Username must have a minimum of 5 characters</target>
+            	</trans-unit>
+            	<trans-unit id="v_usermax">
+                <source>El username debe tener un máximo de 15 caracteres</source>
+                <target>Username must have a maximum of 15 characters</target>
+            	</trans-unit>
+            	<trans-unit id="v_userregex">
+                <source>El username sólo puede contener caracteres alfanuméricos</source>
+                <target>Username must be alphanumeric</target>
+            	</trans-unit>
+            	<trans-unit id="v_passmin">
+                <source>El password debe tener un mínimo de 8 caracteres</source>
+                <target>Password must have a minimum of 8 characters</target>
+            	</trans-unit>
+            	<trans-unit id="v_cp">
+                <source>El código postal no es correcto</source>
+                <target>The zip code is not correct</target>
+            	</trans-unit>
+            	<trans-unit id="v_tfno">
+                <source>El nº de teléfono no es correcto</source>
+                <target>The phone number is not correct</target>
+            	</trans-unit>
+            	
+            	
+            	
+            	<trans-unit id="v_nombreproducto">
+                <source>El nombre no puede contener el caracter /</source>
+                <target>The product name must not have the character /</target>
+            	</trans-unit>
+            	<trans-unit id="v_stock">
+                <source>El stock no puede ser cero o un número negativo</source>
+                <target>The stock must not be zero or a negative number</target>
+            	</trans-unit>
+            	<trans-unit id="v_precio">
+                <source>El precio no puede ser un número negativo</source>
+                <target>The price must not be a negative number</target>
+            	</trans-unit>
+            	
+            	
+
+            
+            
+
+        </body>
+    </file>
+</xliff>				

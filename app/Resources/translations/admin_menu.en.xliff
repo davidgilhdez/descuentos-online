@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="es" datatype="plaintext" original="file.ext">
+            <body>
+            
+            <trans-unit id="Admin">
+                <source>(ADMINISTRADOR)</source>
+                <target>(ADMINISTRATOR)</target>
+            </trans-unit>
+            <trans-unit id="gest_producto">
+                <source>Gestionar productos</source>
+                <target>Manage products</target>
+            </trans-unit>
+            <trans-unit id="gest_usuarios">
+                <source>Administrar usuarios</source>
+                <target>Manage users</target>
+            </trans-unit>
+             <trans-unit id="nuevo_producto">
+                <source>Nuevo producto</source>
+                <target>New product</target>
+            </trans-unit>
+            
+         
+        </body>
+    </file>
+</xliff>

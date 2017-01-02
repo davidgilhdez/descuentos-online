@@ -2,12 +2,15 @@
 
 namespace UsersBundle\Entity;
 
+
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Usuario
  */
-class Usuario
+class Usuario implements UserInterface
 {
     /**
      * @var int
@@ -49,10 +52,8 @@ class Usuario
      */
     private $email;
 
-    /**
-     * @var bool
-     */
-    private $admin;
+    
+    private $roles;
 
     /**
      * @var string
@@ -63,15 +64,27 @@ class Usuario
      * @var string
      */
     private $password;
+    
+    
+  	 private $is_active;
+  	 private $salt;
 
 	//variable para la relación con los pedidos
 	protected $pedidos;
+	protected $devoluciones;
 
 	//constructor
-	public function __construct(){
-	$this->pedidos = new ArrayCollection;	
-	$this->admin = false;
-	}
+	public function __construct($is_admin){
+		if( $is_admin == false ){
+    		$this->pedidos = new ArrayCollection;
+    		$this->devoluciones = new ArrayCollection;   
+    	}
+    	$this->roles = 'ROLE_USER';
+    	$this->is_active = true;
+    	$this->salt = "";
+    }
+
+	
 	
 	//método para obtener pedidos
 	public function getPedidos(){
@@ -249,28 +262,7 @@ class Usuario
         return $this->email;
     }
 
-    /**
-     * Set admin
-     *
-     * @param boolean $admin
-     * @return Usuario
-     */
-    public function setAdmin($admin)
-    {
-        $this->admin = $admin;
-
-        return $this;
-    }
-
-    /**
-     * Get admin
-     *
-     * @return boolean 
-     */
-    public function getAdmin()
-    {
-        return $this->admin;
-    }
+  
 
     /**
      * Set username
@@ -316,5 +308,120 @@ class Usuario
     public function getPassword()
     {
         return $this->password;
+    }
+
+    /**
+     * Add pedidos
+     *
+     * @param \UsersBundle\Entity\Pedido $pedidos
+     * @return Usuario
+     */
+    public function addPedido(\UsersBundle\Entity\Pedido $pedidos)
+    {
+        $this->pedidos[] = $pedidos;
+
+        return $this;
+    }
+
+    /**
+     * Remove pedidos
+     *
+     * @param \UsersBundle\Entity\Pedido $pedidos
+     */
+    public function removePedido(\UsersBundle\Entity\Pedido $pedidos)
+    {
+        $this->pedidos->removeElement($pedidos);
+    }
+    
+    //métodos de la interfaz
+    
+    public function getRoles(){
+		return array($this->roles);
+    }
+    
+    public function setRoles($rol){
+    	$this->roles = $rol;
+    }
+    
+    public function getSalt()
+    {
+        return $this->salt;
+    }
+
+    
+    public function eraseCredentials(){}
+    
+    
+    
+    
+    
+
+    /**
+     * Set is_active
+     *
+     * @param boolean $isActive
+     * @return Usuario
+     */
+    public function setIsActive($isActive)
+    {
+        $this->is_active = $isActive;
+
+        return $this;
+    }
+
+    /**
+     * Get is_active
+     *
+     * @return boolean 
+     */
+    public function getIsActive()
+    {
+        return $this->is_active;
+    }
+
+    /**
+     * Set salt
+     *
+     * @param string $salt
+     * @return Usuario
+     */
+    public function setSalt($salt)
+    {
+        $this->salt = $salt;
+
+        return $this;
+    }
+
+    /**
+     * Add devoluciones
+     *
+     * @param \UsersBundle\Entity\Devolucion $devoluciones
+     * @return Usuario
+     */
+    public function addDevolucione(\UsersBundle\Entity\Devolucion $devoluciones)
+    {
+        $this->devoluciones[] = $devoluciones;
+
+        return $this;
+    }
+
+    /**
+     * Remove devoluciones
+     *
+     * @param \UsersBundle\Entity\Devolucion $devoluciones
+     */
+    public function removeDevolucione(\UsersBundle\Entity\Devolucion $devoluciones)
+    {
+        $this->devoluciones->removeElement($devoluciones);
+    }
+
+    /**
+     * Get devoluciones
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getDevoluciones()
+    {
+        return $this->devoluciones;
     }
 }

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h2> {% trans from "formularios" %}Devolver Producto{% endtrans %} </h2>
+
+<div id="forms">
+	<ul>
+		<li><div id="imgedit">
+		<img src="{{linea.getProducto().getImagen()}}" width=150px; height=150px;><br><br>
+		</div>
+		</li>
+		<div id="nom_dev">
+		<li>{{linea.getProducto().getNombre()}}</li>
+		</div>
+		{{form_start(form)}}
+		<li id="campo_cantidad">{% trans from "formularios" %}Cantidad{% endtrans %}: {{form_widget(form.cantidad ,{attr: {'value':1, 'min':1, 'max':linea.getCantidadDevolver()}})}}</li>
+		<li>{% trans from "formularios" %}Deseo{% endtrans %}:<br>
+		{{form_widget(form.tipo)}}		
+		</li>
+		<li>{% trans from "formularios" %}Observaciones{% endtrans %}:<br>
+		{{form_widget(form.observaciones)}}</li>
+		<li>{% trans from "formularios" %}El producto entra a stock{% endtrans %}:<br>
+		{{form_widget(form.astock)}}</li>
+		<br>
+		<li>{{form_widget(form.devolver)}}</li>
+		{{form_end(form)}}
+	</ul>
+
+
+	
+</div>
+	
+		
+		
+
+{% endblock %}

@@ -5,73 +5,47 @@
 	<div id="show_product">
 	<div id="product_head">
 		<div id="product_img">
-			<img src="../images/grafica.jpg" width=350px height=350px>
+			<img src="{{producto.imagen}}" width=350px height=350px>
 		</div>
 		<div id="product_info">
-			<h2> Asus Dual GeForce GTX 1070 OC 8GB GDDR5 </h2>
+			<h2> {{producto.nombre}} </h2>
 			<div id="product_price">
-			<span class="precio_original">400€</span>
-			<span class="precio_descuento">300€</span>
-			<span class="descuento">-25%</span>
+			<span class="precio_original">{{producto.precio}}€</span>
+			<span class="precio_descuento">{{producto.getPrecio_descuento()}}€</span>
+			<span class="descuento">-{{producto.descuento}}%</span>
 			</div>
 			</br>
 			<ul>
-				<li>Unidades disponibles</li>
-				<li>Cantidad</li>
-				<a href=""><div class="comprar">
+				<li>{% trans from "formularios" %}Unidades disponibles{% endtrans %}: <span id="disponibles">{{producto.cantidad}}</span></li>
+				{% if app.session.get('rol') == "ROLE_USER" and producto.cantidad > 0 %}
+				{{form_start(form)}}
+				<li id="campo_cantidad">{% trans from "tablas" %}Cantidad{% endtrans %} {{form_widget(form.cantidad, {attr: {'value':1, 'min':1, 'max':producto.getCantidad()}})}}</li>
 				
-				Añadir al carrito
-				</div></a>
+				
+				{{form_widget(form.añadir_al_carrito)}}
+				
+				{{form_end(form)}}
+				{% endif %}
 			</ul>
 		</div>
 	</div>
 	<div class="clear"></div>
 		
 	<div id="description">
-		<pre>
-<b>Especificaciones</b></br>
-Con hasta un 100% más de rendimiento que las tarjetas de la serie anterior y un espectacular desempeño gráfico en videojuegos
-y realidad virtual, llegan a nosotros las GTX 1070, las joyas de la corona de las tarjetas gráficas. 
-La serie 70 es tradicionalmente la mejor serie en cuanto a relación calidad/precio.
-
-La nueva serie de tarjetas gráficas Nvidia han dejado boquiabiertos a todo el mundo en todos los aspectos imaginables al 
-superar en potencia, consumo precio que nadie esperaba. Sobre todo después de haber sido sometida a varias pruebas en las
-que su rendimiento no sólo dobla, sino que en algunos casos triplica, la potencia gráfica de modelos anteriores, y todo ello
-con un precio ultra competitivo.
-
-Características:
-
-    Reloj acelerado a 1771 MHz en modo OC para un rendimiento y una experiencia gaming espectaculares.
-    Ventiladores Wing-Blade. Un diseño patentado que aumenta la presión de aire sobre el disipador un 105 %.
-    Diseño a juego con la placa ASUS X99-A II para un estilo y rendimiento optimizados.
-    La tecnología Auto-Extreme con Super Alloy Power II ofrece la mejor calidad y fiabilidad.
-    Puertos HDMI compatibles con RV para proporcionarte la experiencia virtual más avanzada.
-    GPU Tweak II con XSplit Gamecaster. Ajustes intuitivos de rendimiento y retransmisión de partidas en vivo.
-    NVIDIA ANSEL brinda un modo revolucionario de realizar capturas de tus partidas.
-    NVIDIA GameWorks™ proporciona una experiencia interactiva y cinemática, así como una acción increíblemente fluida.
-
-Asus Dual GeForce GTX 1070 OC especificaciones
-
-    Motor Gráfico NVIDIA GeForce GTX 1070
-    Bus PCI Express 3.0
-    OpenGL OpenGL®4.5
-    Memoria de Video GDDR5 8GB
-    Frecuencia del Reloj
-        Frecuencia de la GPU OC: 1771 MHz
-        Frecuencia de la GPU por defecto: 1582 MHz
-    Núcleo CUDA 1920
-    Frecuencia de la Memoria 8008 MHz
-    Interfaz de Memoria 256 bits
-    Resolución Max. resolución digital: 7680 x 4320
-    Interfaz
-        Salida DVI: Sí x 1 (DVI-D)
-        Salida HDMI: Sí x 2 (HDMI 2.0)
-        DisplayPort : Sí x 2 (Regular DP)
-        Soporte HDCP: Sí
-    Software ASUS GPU TweakII & Driver
-    Dimensiones 24 x 12.9 x4.15cm.
+	<b>{% trans from "formularios" %}Descripción del producto{% endtrans %}</b></br></br>
 	
-		</br></br></pre>
+
+		
+	{% if app.request.locale == "es" %}
+	
+	{{producto.getDescripcion()| raw }}
+	{% else %}
+	{{producto.getDescripcionEn()}}
+	{% endif %}
+	
+		
+	
+	
 	
 	</div>
 	<div class="clear"></div>

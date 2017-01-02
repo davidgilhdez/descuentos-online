@@ -2,6 +2,50 @@
 
 {% block body %}
 
-Página de inicio del proyecto
+
+	<h2>{% trans from "home" %}Ofertas exclusivas por tiempo limitado{% endtrans %}</h2>
+	<h3>{% trans from "home" %}¡Que no se te adelanten, haz ya tu pedido!{% endtrans %}</h3>
+	
+	
+	{% for producto in productos  %}
+	
+		{% if producto.cantidad > 0 %}
+			
+			<div class="elemento">
+				
+		<a href="{{path('show_product',{product_name: producto.getNombretoUrl()})}}">
+		<img src="{{producto.getImagen()}}" width="250px" height="250px">
+		<div class="clear"></div>
+		<span class="nombre_producto">{{producto.nombre}}</span>
+		<br><br>
+		<span class="precio_original">{{producto.precio}}€</span>
+		<span class="precio_descuento">{{producto.getPrecio_descuento()}}€</span>
+		<span class="descuento">-{{producto.descuento}}%</span>
+		<br>
+		<div class="clear"></div>
+		
+			{% if producto.cantidad <= 10 %}
+						
+				<div class="parpadea"><div class="ultimos">{% trans from "home" %}¡¡¡Últimas unidades!!!{% endtrans %}</div></div>
+				{% endif %}
+		
+		</a></div>
+	
+				{% endif %}
+			
+		{% if loop.index == 3 %}
+		<div class="clear"></div>
+		<br>
+		{% endif %}
+		
+	{% endfor %}
+	
+	
+	
+	
+	
+	<div class="clear"></div>
+
+	
 
 {% endblock %}

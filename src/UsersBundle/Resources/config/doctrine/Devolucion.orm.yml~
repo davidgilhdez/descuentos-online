@@ -1,0 +1,49 @@
+UsersBundle\Entity\Devolucion:
+    type: entity
+    table: devolucion
+    manyToOne:
+        usuario:
+            targetEntity: Usuario
+            inversedBy: devoluciones
+            joinColumn:
+                name: usuario_id
+                referencedColumnName: id
+        producto:
+            targetEntity: ProductsBundle\Entity\Producto
+            joinColumn:
+                name: producto_id
+                referencedColumnName: id
+        linea_pedido:
+            targetEntity: Linea_pedido
+            inversedBy: devoluciones
+            joinColumn:
+                name: producto_id
+                referencedColumnName: id
+                
+    repositoryClass: UsersBundle\Repository\DevolucionRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        tipo:
+            type: string
+            length: 255
+        observaciones:
+            type: text
+        estado:
+            type: string
+            length: 255
+        fecha:
+            type: datetime
+            
+        cantidad:
+            type: integer
+        importe:
+            type: float
+        resolucion:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

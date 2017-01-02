@@ -1,14 +1,11 @@
 ProductsBundle\Entity\Producto:
     type: entity
     table: producto
-    oneToOne:
-        linea_pedido:
-            targetEntity: UsersBundle\Entity\Linea_pedido
-            inversedBy: producto
-            joinColumn:
-                name: linea_pedido_id
-                referencedColumnName: id
-
+    indexes:
+      nombre_index:
+        columns: [ nombre ]
+      vendiendo_index:
+        columns: [ vendiendo ]
     repositoryClass: ProductsBundle\Repository\ProductoRepository
     id:
         id:
@@ -19,8 +16,10 @@ ProductsBundle\Entity\Producto:
     fields:
         nombre:
             type: string
-            length: '100'
+            length: 255
         descripcion:
+            type: text
+        descripcion_en:
             type: text
         precio:
             type: float
@@ -32,5 +31,7 @@ ProductsBundle\Entity\Producto:
             type: integer
         imagen:
             type: string
-            length: '255'
+            length: 255
+        is_active:
+            type: boolean
     lifecycleCallbacks: {  }

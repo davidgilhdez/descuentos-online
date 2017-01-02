@@ -1,0 +1,13 @@
+services:
+
+ monolog.logger.registro:
+    class: Symfony\Bridge\Monolog\Logger
+    arguments: ['monolog.logger.registro']
+    tags:
+      - { name: monolog.logger, channel: registro }
+
+  users.register_listener:
+    class: UsersBundle\EventListener\LogListener
+    arguments: [@monolog.logger.registro]
+    tags:
+      - { name: kernel.event_listener, event: add.log, method: onLogAction}

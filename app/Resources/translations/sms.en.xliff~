@@ -1,0 +1,65 @@
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="es" datatype="plaintext" original="file.ext">
+            <body>
+            <trans-unit id="m_login">
+                <source>Nombre de usuario o Password no válidos</source>
+                <target>Bad Credentials</target>
+            </trans-unit>
+            <trans-unit id="m_contra_coincide">
+                <source>Las contraseñas no coinciden</source>
+                <target>Passwords must match</target>
+            </trans-unit>
+            <trans-unit id="m_registro">
+                <source>Te has registrado con éxito, Inicia sesión para acceder a tu cuenta</source>
+                <target>You have successfully registered, Log in to access your account</target>
+            </trans-unit>
+            <trans-unit id="m_usuarioenuso">
+                <source>Nombre de usuario en uso</source>
+                <target>Username in use</target>
+            </trans-unit>
+            <trans-unit id="m_editperfil">
+                <source>Perfil modificado con éxito</source>
+                <target>Successfully modified profile</target>
+            </trans-unit>
+            <trans-unit id="m_pass1">
+                <source>Su password actual no coincide con el introducido</source>
+                <target>Your actual password don't match</target>
+            </trans-unit>
+            <trans-unit id="m_pass2">
+                <source>Los nuevos passwords no coinciden</source>
+                <target>New passwords must match</target>
+            </trans-unit>
+            <trans-unit id="m_pass3">
+                <source>Password modificado con éxito</source>
+                <target>Password successfully modified</target>
+            </trans-unit>
+            <trans-unit id="m_pedido">
+                <source>Pedido realizado con éxito</source>
+                <target>Order placed successfully</target>
+            </trans-unit>
+            <trans-unit id="m_recursoerror">
+                <source>El recurso solicitado no está disponible</source>
+                <target>The requested resource is not available</target>
+            </trans-unit>
+            <trans-unit id="cuenta_inactiva">
+                <source>Tu cuenta está inactiva, contacta con el Administrador</source>
+                <target>Your account is inactive, contact with the site Administrator</target>
+            </trans-unit>
+            <trans-unit id="eliminar_producto">
+                <source>El producto se ha eliminado correctamente</source>
+                <target>The product was successfully deleted</target>
+            </trans-unit>
+            <trans-unit id="error_pedido">
+                <source>Error al crear pedido, el stock de algunos artículos es inferior al solicitado</source>
+                <target>Error creating the order, the stock of some products is lower than requested</target>
+            </trans-unit>
+            <trans-unit id="faltastock">
+                <source>El stock del producto a reemplazar es de </source>
+                <target>The stock of product to be replaced is </target>
+            </trans-unit>
+       
+
+
+        </body>
+    </file>
+</xliff>

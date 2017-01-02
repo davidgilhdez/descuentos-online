@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h2> {% trans from "tablas" %}Pedidos Pendientes{% endtrans %} </h2>
+
+<div id="tabla">
+{% if pendientes == null %}
+<h4>No hay pedidos pendientes por preparar</h4>
+{% else %}
+<div id="historial_devolucion"><a href="{{path('prepare_products')}}">
+Preparar productos</a></div>
+	<table>
+		<tr>
+			<th>{% trans from "tablas" %}ID{% endtrans %}</th>
+			<th>{% trans from "tablas" %}Fecha{% endtrans %}</th>
+			<th>{% trans from "tablas" %}Pedido{% endtrans %}</th>
+			<th>{% trans from "tablas" %}Estado{% endtrans %}</th>
+		
+			<th></th>
+		</tr>
+		
+		{% for pendiente in pendientes %}
+		<tr>
+			
+				<td>{{pendiente.id}} 
+				{% if pendiente.isdevolucion %}
+				(Reemplazo)
+				{% endif %}
+				</td>
+				<td>{{pendiente.fecha}}</td>
+				<td><a href="{{path('show_order_products',{username: pendiente.usuario.getUsername(),id:pendiente.id})}}">Ver Pedido</a></td>
+				<td>{{pendiente.estado}}</td>
+				<td>
+				{% if pendiente.estado == "Pendiente" %}
+				<a href="{{path('preparing_orders',{id:pendiente.id})}}">Preparar</a>
+				{% else %}
+				-
+				{% endif %}
+				
+				
+				</td>
+				
+		</tr>
+			
+		{% endfor %}
+			
+	</table>		
+{% endif %}
+</div>
+	
+		
+		
+
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h2> {% trans from "tablas" %}Historial de Devoluciones{% endtrans %} </h2>
+
+<div id="tabla">
+ {% if devoluciones == null %}
+ <h4>{% trans from "tablas" %}No has realizado ninguna devolución{% endtrans %}</h4>
+ {% else %}
+	<table>
+		<tr>
+			<th>{% trans from "tablas" %}Referencia{% endtrans %}</th>
+			<th>{% trans from "tablas" %}Fecha{% endtrans %}</th>
+			<th>{% trans from "tablas" %}Pedido{% endtrans %}</th>
+			<th>{% trans from "tablas" %}Artículo{% endtrans %}</th>
+			<th>{% trans from "tablas" %}Cantidad{% endtrans %}</th>
+			<th>{% trans from "tablas" %}Tipo{% endtrans %}</th>
+			<th>{% trans from "tablas" %}Estado{% endtrans %}</th>
+		</tr>
+		
+			{% for devolucion in devoluciones %}
+		<tr>
+			
+				<td>{{devolucion.id}}</td>
+				<td>{{devolucion.fecha}}</td>
+				<td>{{devolucion.getlineaPedido().getPedido().getId()}}</td>
+				<td><a href="{{path('show_product',{product_name: devolucion.producto.getNombretoUrl()})}}">
+				{{devolucion.producto.getNombre()}}</a>
+				<td>{{devolucion.cantidad}}</td>
+				<td>
+				{%if devolucion.tipo == "Reembolso" %}
+				{% trans from "formularios" %}Reembolso{% endtrans %} ({{devolucion.importe}} €)
+				{% else %}
+				{% trans from "formularios" %}Reemplazo{% endtrans %}
+				{% endif %}
+				</td>
+				<td>{% if devolucion.estado == 'Tramitada' %} 
+				{% trans from "tablas" %}Tramitada{% endtrans %}
+				{% elseif devolucion.estado == 'Sin tramitar' %} 
+				{% trans from "tablas" %}Sin tramitar{% endtrans %}
+				{% elseif devolucion.estado == 'Rechazada' %} 
+				{% trans from "tablas" %}Rechazada{% endtrans %}
+				{% elseif devolucion.estado == 'Pendiente' %} 
+				{% trans from "tablas" %}Pendiente{% endtrans %}
+				{% endif %}
+				</td>
+				
+		</tr>
+			
+			{% endfor %}
+			
+	</table>		
+		{% endif %}
+</div>
+	
+		
+		
+
+{% endblock %}

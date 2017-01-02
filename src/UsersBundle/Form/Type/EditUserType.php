@@ -16,10 +16,8 @@ public function buildForm(FormBuilderInterface $builder, array $options)
         $builder->add('cp', 'text');
         $builder->add('telefono', 'text');
         $builder->add('email', 'text');
-        $builder->add('actual_password', 'text');
-        $builder->add('new_password', 'text');
-        $builder->add('new_password2', 'text');
-        $builder->add('editar_perfil', 'submit');
+        
+        $builder->add('editar_perfil', 'submit',array('translation_domain'=>'formularios'));
     }
 
 	public function getName()

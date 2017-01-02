@@ -22,11 +22,7 @@ background-color:darkblue;
 	overflow:hidden;
 	min-height:100%;
 	padding-bottom:30px;
-	background-color:white;
-	
-	
-	
-	
+	background-color:white;	
 }
 
 ul{
@@ -41,6 +37,7 @@ ul li{
 
 a{
 	text-decoration:none;
+	color:darkblue;
 }
 
 a:hover{
@@ -51,6 +48,43 @@ a:visited{
 	color:darkblue;
 }
 
+#volver{
+	font-family:Verdana;
+	font-size:16px;
+	margin:20px;
+	float:left;
+}
+
+#campo_cantidad input{
+	width:40px;
+	margin-left: 20px;
+	
+}
+
+.separador{
+	width:100%;
+	height:5px;
+	background:darkblue;
+	margin-top:30px;
+	margin-bottom:30px;
+}
+
+#pdf{
+	width:300px;
+	height:320px;
+	background-color:yellow;
+	color:black;
+}
+
+#pdf #titulo{
+	text-align:center;
+	font-weight:bold;
+	font-size:16px;
+}
+
+#pdf #cuerpo_pdf{
+	margin-left:10px;
+}
 
 /************************************** LOGO *************************************************/
 
@@ -128,6 +162,43 @@ a:visited{
 	float:left;
 }
 
+#idiomas{
+	margin-top:5px;
+	margin-bottom:20px;
+	padding-right:10px;
+}
+
+#idiomas #spanish, #idiomas #english{
+	float:right;
+	margin-right:5px;
+}
+
+
+/************************************** MENSAJES *************************************************/
+
+#error{
+	text-align:center;
+	font-size:13px;
+	color:red;
+	margin-top:10px;
+}
+
+#exito{
+	text-align:center;
+	font-size:13px;
+	color:green;
+	margin-top:10px;
+}
+
+.error_validacion ul li{
+text-align:center;
+color:red;
+font-size:12px;
+}
+
+.error_linea, .error_linea a{
+	color:red;
+}
 /************************************** ENCABEZADOS *************************************************/
 
 h2
@@ -148,6 +219,36 @@ h3
 	margin-bottom:70px;
 }
 
+h4
+{
+	font-size:20px;
+	font-family:Verdana;
+	color:#819FF7;
+	text-align:center;
+	margin-top:80px;
+}
+
+.parpadea {
+  
+  animation-name: parpadeo;
+  animation-duration: 1.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+ }
+ 
+ @-moz-keyframes parpadeo{  
+  0% { opacity: 1.0; }
+  50% { opacity: 0.0; }
+  100% { opacity: 1.0; }
+}
+.ultimos
+{
+	font-size:20px;
+	font-family:Verdana;
+	color:#B40404;
+	text-align:center;
+	font-weight: bold;
+}
 /************************************** FORMULARIOS *************************************************/
 
 #forms{
@@ -163,14 +264,33 @@ h3
 	margin-right:50px;
 }
 
-#forms h3{
-	font-size:16px;
-	color:darkblue;
-	margin-bottom:20px;
-
+#forms #link_lista{
+	text-align:center;
+	margin-bottom:30px;
 }
 
+#imgedit{
+	text-align: center;
+}
 
+#imgdelete{
+	text-align: center;
+	margin-top:20px;
+	margin-bottom:-20px;
+}
+
+#margen div button{
+	color:darkblue;
+}
+
+.descripciones{
+	margin-left:-80px;
+}
+
+.desc{
+	text-align: center;
+	margin-left:80px;
+}
 /************************************** VER PERFIL *************************************************/
 
 #ver_perfil{
@@ -190,7 +310,26 @@ h3
 	margin-right:90px;
 }
 
-/************************************** TABLA PEDIDOS, CARRITO *************************************************/
+#ver_perfil ul li input{
+	margin-left:10px;
+	margin-right:3px;
+	
+}
+
+#ver_perfil ul li span{
+	font-size: 13px;
+	color:black;
+}
+
+#ver_perfil button{
+	margin-left: 300px;
+}
+
+#ver_perfil #margen{
+	margin-left:100px;
+}
+
+/************************************** TABLA  *************************************************/
 
 #tabla{
 	width:80%;
@@ -201,26 +340,65 @@ h3
 table{
 	margin-top:30px;
 	width:100%;
-	border:1px solid #CEF6F5;
+	border-collapse: collapse;
 	background-color:darkblue;
 }
 
 th{
-	color:darkblue;
+	color:white;
 	font-weight:bold;
 	font-size:16px;
 	height:50px;
-	border:1px solid #CEF6F5;
-	background-color:white;
-	
+	border-bottom: 2px solid darkblue;
+	background-color:darkblue;	
 }
 
+tr:hover { 
+	background-color:#f5f5f5; 
+} 
+
 td{
-	
+	padding:3px;
 	color:black;
 	font-size:13px;
-	border:1px solid #CEF6F5;
+	border-bottom: 1px solid #ddd;
 	background-color:white;
+}
+
+td.editar{
+	background:brown;
+}
+
+td.editar a{
+	text-decoration:none;
+	color:white;
+}
+
+td.eliminar{
+	background:red;
+}
+
+td.eliminar a{
+	text-decoration:none;
+	color:white;
+}
+
+td.vender{
+	background:green;
+}
+
+td.vender a{
+	text-decoration:none;
+	color:white;
+}
+
+td.quitar{
+	background:black;
+}
+
+td.quitar a{
+	text-decoration:none;
+	color:white;
 }
 
 .comprar{
@@ -229,17 +407,102 @@ td{
 	font-size:20px;
 	background:#DBA901;
 	text-align:center;
-	margin-top:10px;
-	margin-left:25px;
+	margin-top:20px;
+	margin-left:20px;
 	padding:5px;
 	font-family:Verdana;
 	float:right;
 	font-weight:bold;
 }
 
-.comprar #seguir{
+#seguir{
 	font-size:12px;
+	background-color:grey;
+	width:150px;
+	color:white;
+	text-align:center;
+	margin-top:20px;
+	padding:5px;
+	font-family:Verdana;
+	float:right;
+	font-weight:bold;
 }
+
+#total{
+	margin-top:25px;
+	font-size:20px;
+	color: darkblue;
+	
+	font-weight: bold;
+}
+
+.pregunta{
+	width:50%;
+	font-size:20px;
+	color:darkblue;
+	text-align: center;
+	float:left;
+	margin-top:10px;
+}
+
+/************************************** DEVOLUCIONES *************************************************/
+
+#dias_devolucion{
+	margin-top:15px;
+	margin-bottom:-30px;
+}
+
+.titulo_pedido{
+	text-align:left;
+	color:darkblue;
+	margin-bottom:-25px;
+	margin-top:20px;
+}
+
+.numyfecha{
+	color:black;
+	font-size:12px;
+	margin-left:15px;
+	
+}
+
+#historial_devolucion{
+	color:darkblue;
+	text-align:right;
+}
+
+#return_tipo, #process_return_resolucion, #process_return_astock{
+	margin-top:5px;
+	font-size: 13px;
+	color:black;
+}
+
+#return_tipo input,#return_tipo label, #process_return_resolucion label, #process_return_astock label{
+	margin-right:5px;	
+	margin-left:5px;
+}
+
+#nom_dev{
+	text-align:center;
+	color:black;
+	font-size:20px;
+	font-weight:bold;
+	margin-bottom:30px;
+}
+
+.celda_reem{
+	background:darkblue; 
+	color: white;
+}
+
+/************************************** LOGISTICA *************************************************/
+
+#logistica_verpedido{
+	float:right;
+	margin-top:25px;
+	margin-right:10px;
+}
+
 
 /************************************** VER PRODUCTO *************************************************/
 
@@ -248,10 +511,16 @@ td{
 	margin:auto;
 }
 
-#show_product #product_img, #show_product #product_info{
+#show_product #product_info{
 	float:left;
-	width:50%;
+	width:55%;
 }
+
+#show_product #product_img{
+	float:left;
+	width:45%;
+}
+
 
 #product_price{
 	text-align:center;
@@ -285,25 +554,102 @@ td{
 }
 
 #description{
-	font-size:14px;
-	font-family:Arial;
+	overflow:inherit;
 	border-top:2px solid darkblue;
 	margin-top:25px;
 	padding-top:10px;
+	font-size:14px;
+	font-family:Verdana;
+}
+
+#description ul{
+	font-size:12px;
+	color:black;
+	list-style-type:disc;
+}
+
+#disponibles{
+	font-size:18px;
+	margin-left: 5px;
+	font-weight: bold;
+}
+
+
+button#cantidad_añadir_al_carrito{
+	width:150px;
+	color:white;
+	font-size:20px;
+	background:#DBA901;
+	text-align:center;
+	margin-top:20px;
+	margin-left:20px;
+	padding:5px;
+	font-family:Verdana;
+	float:right;
+	font-weight:bold;
+}
+
+/************************************** PRODUCTOS INDEX *************************************************/
+
+.elemento
+{
+	float:left;
+	width:33%;
+	text-align:center;
+}
+
+.elemento .nombre_producto
+{
+	text-align:center;
+	font-family:Verdana;
+	margin-bottom:10px;
+	padding:20px;
+	font-weight:bold;
+}
+
+.elemento .precio_original
+{
+	
+	text-decoration: line-through;
+	color:grey;
+	font-size:20px;
+	margin-left:10px;
+}
+
+.elemento .precio_descuento
+{
+	font-size:30px;
+	margin-left:10px;
+	font-weight:bold;
+	text-shadow: -1px -1px 1px blue;
+}
+
+.elemento .descuento
+{
+	font-size:20px;
+	color:red;
+	font-weight:bold;
+	margin-left:10px;
+}
+
+.elemento a:hover{
+	text-shadow:2px 2px 1px #819FF7;
 }
 /************************************** FOOTER *************************************************/
 
 #footer
 {
-	
-	
+	color:white;
+	text-align:center;
+	font-size:14px;
 	height:50px;
 	border-top:solid 5px darkblue;
 	background-color:#819FF7;
   	width:90%; 
   	margin:auto;
-	 
+  	padding-top:10px;
 	 position: relative;
+	
 
 	
 	 

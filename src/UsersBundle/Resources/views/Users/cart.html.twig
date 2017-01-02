@@ -2,34 +2,72 @@
 
 {% block body %}
 
-<h2> Mi carrito </h2>
+<h2>{% trans from "tablas" %} Mi Carrito {% endtrans %}</h2>
 
-	<div id="tabla">
+{% if app.session.has('lineas') %}
+
+<div id="tabla">
 	<table>
 		<tr>
 			<th></th>
-			<th>Artículo</th>
-			<th>Cantidad</th>
-			<th>Importe</th>
+			<th>{% trans from "tablas" %}Artículo{% endtrans %}</th>
+			<th>{% trans from "tablas" %}Cantidad{% endtrans %}</th>
+			<th>{% trans from "tablas" %}Importe{% endtrans %}</th>
+			<th></th>
 		</tr>
+		
+		{% if linea_error is not defined %}
+			{% for linea in lineas %}
 		<tr>
-			<td><img src="../images/grafica.jpg" width=50px height=50px</td>
-			<td>Asus Dual GeForce GTX 1070 OC 8GB GDDR5</td>
-			<td>1</td>
-			<td>41.95€</td>
+			<td><img src="{{linea.producto.getImagen()}}" width=50px height=50px</td>
+			<td><a href="{{path('show_product',{product_name: linea.producto.getNombretoUrl()})}}">{{linea.producto.nombre}}</td> 
+			<td>{{linea.getCantidad()}}</td>
+			<td>{{linea.Importe()}} €</td>
+			<td><a href="{{path('delete_line',{id : linea.id, loop: loop.length})}}"> X </a></td>
 		</tr>	
+			{% endfor %}
 	</table>
-	<a href=""><div class="comprar">
-				
-				Finalizar compra
-				</div></a>
-	<a href=""><div class="comprar">
+	<a href="{{path('finish_order',{username:lineas[0].getUsuario().getUsername()})}}">
+	<div class="comprar">
+		{% trans from "tablas" %}Finalizar compra{% endtrans %}
+	</div></a>
+	<a href="{{path('home')}}">
 	<div id="seguir">
-				Seguir comprando
-				</div>
-				
-				</div></a>
-	<div class="clear"></div>
-	</div>
+		{% trans from "tablas" %}Seguir comprando{% endtrans %}
+	</div></a>
+		{% else %}
+		{% if lines != null %}
+		{% for linea in lines %}
+		<tr>
+			<td><img src="{{linea.producto.getImagen()}}" width=50px height=50px</td>
+			<td><a href="{{path('show_product',{product_name: linea.producto.getNombretoUrl()})}}">{{linea.producto.nombre}}</td> 
+			<td>{{linea.getCantidad()}}</td>
+			<td>{{linea.Importe()}} €</td>
+			<td><a href="{{path('delete_line',{id : linea.id, loop: loop.length})}}"> X </a></td>
+		</tr>	
+		{% endfor %}
+		{% endif %}
+		{% for linea in linea_error %}	
+		<tr >
+			<td><img src="{{linea.producto.getImagen()}}" width=50px height=50px</td>
+			<td class="error_linea"><a href="{{path('show_product',{product_name: linea.producto.getNombretoUrl()})}}">{{linea.producto.nombre}}</td> 
+			<td class="error_linea">Stock: {{linea.producto.getCantidad()}}</td>
+			<td class="error_linea">-</td>
+			<td> </td>
+		</tr>	
+		{% endfor %}
+			
+	</table>
+	{% endif %}
+
+</div>
+		
+	{% else %}
+
+		<h4>{% trans from "tablas" %}Tu carrito está vacío{% endtrans %}</h4>
+	
+	{% endif %}
+	
+	
 
 {% endblock %}

@@ -12,21 +12,89 @@
 				<div id="logo">
 					<h1>descuentos-online.com</h1>
 				</div>
+					
+				{% if app.session.get('rol') is defined %}
+					{% if app.session.get('rol') == "ROLE_USER" %}
+						{% include "user_menu.html.twig" %}
+					{% elseif app.session.get('rol') == "ROLE_ADMIN" %}     
+						{% include "admin_menu.html.twig" %}
+					{% elseif app.session.get('rol') == "ROLE_LOGISTICS" %}     
+						{% include "logistics_menu.html.twig" %}					
+					{% else %}
+						{% include "guest_menu.html.twig" %}	
+					{% endif %}
+				{% else %}
+					{% include "guest_menu.html.twig" %}	
+				{% endif %}
 				
+				{% if app.session.flashbag.has('error_login') %}
+					{% for flash_message in app.session.flashbag.get('error_login') %}
+						<div id="error">			
+							{{ flash_message|trans({},'security') }}	
+						</div>
+					{% endfor %}
+				{% endif %}
 				
-					{% include "guest_menu.html.twig" %}
+				{% if app.session.flashbag.has('mensaje_error') %}
+					{% for flash_message in app.session.flashbag.get('mensaje_error') %}
+						<div id="error">
+							{{ flash_message|trans({},'sms') }}	
+						</div>
+					{% endfor %}
+				{% elseif app.session.flashbag.has('mensaje_exito') %}
+					{% for flash_message in app.session.flashbag.get('mensaje_exito') %}
+						<div id="exito">
+							{{ flash_message|trans({},'sms') }}
+						</div>
+					{% endfor %}
+				{% endif %}
+	
+				{% if app.request.get('_route')!='home' %}
+					<div id="volver">
+						<a href="{{path('home')}}">{% trans from "home" %}Volver a INICIO{% endtrans %}</a>
+					</div>
+			{% endif %}
+			
+			<div class="clear"></div>
 				
+				{% if app.session.get('rol') == "ROLE_USER" or app.session.get('rol') is empty %}
 				
+				<div id="idiomas">
+				{% if app.session.has('idioma') %}
+				<div id="spanish">
+				<a href="{{path('change_languaje')}}">
+					<img src="/images/spanish.png" width=35px height=25px>
+				</a>
+				</div>
 				
+				{% else %}
+				<div id="english">
+				<a href="{{path('change_languaje')}}">
+					<img src="/images/english.png" width=35px height=25px>
+				</a>
+				</div>
+				
+				{% endif %}
+			</div>
+			<div class="clear"></div>
+			
+			{% endif %}
         {% block body %}
         
+        
+        
         {% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+        {{ tinymce_init() }}
+        
+        {% endblock %}
         	
         		
-        </div>
-        <div id="footer">
-				</div>
+        	</div>
+       	 <div id="footer">
+        		<b>{% trans from "home" %}Administrador del sitio:{% endtrans %}</b> {{ site_admin }}<br>
+        		<b>{% trans from "home" %}Contacto:{% endtrans %}</b> {{ contact_email }}
+			</div>
 				
         
     </body>

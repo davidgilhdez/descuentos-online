@@ -1,0 +1,243 @@
+<?php
+
+namespace UsersBundle\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
+use UsersBundle\Form\Type\ReturnType;
+use UsersBundle\Form\Type\ProcessReturnType;
+use UsersBundle\Entity\Usuario;
+use UsersBundle\Entity\Pedido;
+use UsersBundle\Entity\Linea_pedido;
+use UsersBundle\Entity\Devolucion;
+use ProductsBundle\Entity\Producto;
+
+
+
+class ReturnsController extends Controller
+{
+	
+/******************************   RETURNS  ************************************************************/     
+    
+    public function returnsAction()
+    {
+    	
+    	$pedidos = $this->getUser()->getPedidos();
+    	
+    	$devoluciones=null;
+    	
+		//compruebo los pedidos que cumplen el plazo de devolución    	
+    	
+    	foreach ($pedidos as $pedido){
+    		if($pedido->getEstado() == "Finalizado"){
+				if(strtotime($pedido->getFechaProcesado()) >= strtotime("-50 day")){
+			
+				$devoluciones[]=$pedido;
+				}  
+			}	
+    	}
+  
+    return $this->render('UsersBundle:Users:returns.html.twig',array('devoluciones'=>$devoluciones));
+ }
+ 
+ /******************************   RETURN PRODUCT  ************************************************************/ 
+ 
+public function returnProductAction(Request $request,$id,$username)
+    { 
+    
+    $session = $request->getSession();
+    if($username!=$session->get('username')){
+			return $this->redirect($this->generateUrl('error'));			
+	 }
+    $linea = $this->getDoctrine()->getRepository('UsersBundle:Linea_pedido')->find($id);
+    $devolucion = new Devolucion();
+    $form = $this->createForm(new ReturnType(),$devolucion);  
+		$form->handleRequest($request);
+		if($form->isValid()){
+			
+			//si quiere un reemplazo compruebo que haya suficiente stock de la cantidad a reemplazar 
+			
+			if($form->get('tipo')->getData() == "Reemplazo"){
+				if($form->get('cantidad')->getData() > $linea->getProducto()->getCantidad()){
+					$mt = $this->get('translator')->trans('El stock del producto a reemplazar es de ', array(), 'sms');
+					
+					$session->getFlashBag()->set('mensaje_error', $mt.$linea->getProducto()->getCantidad());
+				//	$session->getFlashBag()->add('mensaje_error',  );
+					return $this->redirect($this->generateUrl('return_product',array('username'=>$session->get('username'),
+					'id'=>$id)));
+				}
+			}
+			
+			
+			//creo la devolucion
+			
+			$devolucion->setUsuario($linea->getUsuario());
+			$devolucion->setProducto($linea->getProducto());
+			$devolucion->setLineaPedido($linea);
+			$devolucion->setFecha(new \DateTime());
+			$devolucion->setImporte($linea->getProducto()->getPrecio_descuento() * $form->get('cantidad')->getData());
+			$em = $this->getDoctrine()->getManager();
+			$em->persist($devolucion);
+			$em->flush();
+			return $this->redirect($this->generateUrl('returns_history',array('username'=>$session->get('username'))));
+		}
+    return $this->render('UsersBundle:Users:return_product.html.twig',array('linea'=>$linea,'form' => $form->createView()));
+ }
+ 
+ /******************************   RETURN HISTORY ************************************************************/ 
+ 
+public function returnHistoryAction()
+    { 
+    
+    $devoluciones = $this->getUser()->getDevoluciones();
+    return $this->render('UsersBundle:Users:returns_history.html.twig',array('devoluciones'=>$devoluciones));
+ }
+    
+ /******************************   MANAGE RETURNS **********************************************************/ 
+ 
+public function manageReturnsAction()
+    {     
+    $devoluciones = $this->getDoctrine()->getRepository('UsersBundle:Devolucion')->findByNoSolveReturns();
+    return $this->render('UsersBundle:Users:manage_returns.html.twig',array('devoluciones'=>$devoluciones));
+}
+
+/******************************  PROCESS RETURN ************************************************************/ 
+ 
+public function processReturnAction($id)
+    {
+    $devolucion = $this->getDoctrine()->getRepository('UsersBundle:Devolucion')->find($id);
+    $devolucion->setEstado("Tramitada"); 
+    $em = $this->getDoctrine()->getManager();
+    $em->persist($devolucion);
+    $em->flush();
+		    
+    return $this->redirect($this->generateUrl('manage_returns'));
+	    
+    }
+    
+/******************************  LOGISTICS MANAGE RETURNS ************************************************************/     
+    
+    public function manageReturnsLogisticsAction()
+    {    
+    	$devoluciones = $this->getDoctrine()->getRepository('UsersBundle:Devolucion')->findByNoSolveReturns();
+    return $this->render('UsersBundle:Users:logistics_returns.html.twig',array('devoluciones'=>$devoluciones));
+    
+    }
+    
+    
+    /******************************  LOGISTICS PROCESS RETURNS ************************************************************/     
+    
+    public function processReturnLogisticsAction($id,Request $request)
+    {    
+    	$devolucion = $this->getDoctrine()->getRepository('UsersBundle:Devolucion')->find($id);
+    	$form = $this->createForm(new ProcessReturnType(),$devolucion);  
+		$form->handleRequest($request);
+		if($form->isValid()){
+			
+			//resolucion negativa			
+			
+		if($form->get('resolucion')->getData() == "Negativa")
+		{
+			$devolucion->setEstado("Rechazada");
+			$devolucion->setResolucion($form->get('resolucion')->getData());
+			$em = $this->getDoctrine()->getManager();
+			$em->persist($devolucion);
+			$em->flush();
+			return $this->redirect($this->generateUrl('manage_returns_logistics'));
+			
+		}
+			//resolucion positiva
+			
+		else{
+			
+			//modifico la línea y el pedido afectados por la devolución			
+			
+			$linea = $devolucion->getLineaPedido();
+			//$linea->setCantidad($linea->getCantidad() - $devolucion->getCantidad());
+			//$linea->setImporte($linea->getImporte() - $devolucion->getProducto()->getPrecio_descuento()*$devolucion->getCantidad());
+			//$pedido_mod = $linea->getPedido();
+			//$pedido_mod->setImporte($pedido_mod->calcularImporte());
+			$devolucion->setResolucion($form->get('resolucion')->getData());
+			$devolucion->setImporte($devolucion->getProducto()->getPrecio_descuento()*$devolucion->getCantidad());
+			
+			//si el usuario quiere un reemplazo, creo un nuevo pedido
+			
+			if($devolucion->getTipo() == "Reemplazo"){
+				
+				$pedido = new Pedido();
+				$devolucion->setEstado("Tramitada");
+				$linea_dev = new Linea_pedido();
+				$linea_dev->setProducto($devolucion->getProducto());
+				$devolucion->getProducto()->setCantidad($devolucion->getProducto()->getCantidad() - $devolucion->getCantidad());
+				//$linea_dev->setImporte($devolucion->getProducto()->getPrecio_descuento()*$devolucion->getCantidad());
+				$linea_dev->setCantidad($devolucion->getCantidad());
+				$linea_dev->setUsuario($devolucion->getUsuario());
+				$linea_dev->setPedido($pedido);
+				$pedido->addLineasPedido($linea_dev);
+				$pedido->setIsdevolucion(true);
+				$pedido->setImporte(0);
+         	$pedido->setFecha(new \DateTime());
+         	$usuario = $devolucion->getUsuario();
+         	$pedido->setUsuario($usuario);
+         	$usuario->addPedido($pedido);
+	
+				$em = $this->getDoctrine()->getManager();
+				$em->persist($pedido);
+				//$em->persist($pedido_mod);
+				//$em->persist($linea);
+				$em->persist($linea_dev);
+				$em->persist($devolucion);
+				$em->persist($devolucion->getProducto());
+				$em->flush();
+				return $this->redirect($this->generateUrl('manage_returns_logistics'));
+			}
+		
+		//si quiere abono, cambio el estado de la devolución a pendiente para que sea el admin el que la tramite		
+		
+			else{
+				
+				if($form->get('astock')->getData() == ""){
+					$session = $request->getSession();
+					$session->getFlashBag()->set('mensaje_error', 'Debes seleccionar si el producto entra a stock');
+					return $this->redirect($this->generateUrl('process_return_logistics',array('id'=>$id)));
+				}
+				
+		     // $linea = $devolucion->getLineaPedido();
+				//$linea->setCantidad($linea->getCantidad() - $devolucion->getCantidad());
+				//$linea->setImporte($linea->getImporte() - $devolucion->getProducto()->getPrecio_descuento()*$devolucion->getCantidad());
+				//$pedido_mod = $linea->getPedido();
+				//$pedido_mod->setImporte($pedido_mod->calcularImporte());
+				//$devolucion->setResolucion($form->get('resolucion')->getData());
+			   $devolucion->setEstado("Pendiente");
+			   //$devolucion->setImporte($devolucion->getProducto()->getPrecio_descuento()*$devolucion->getCantidad());
+				$em = $this->getDoctrine()->getManager();
+				
+				//compruebo si el producto entra de nuevo a stock (el producto devuelto se puede volver a vender)
+				
+				if($form->get('astock')->getData() == "Si"){
+					$devolucion->getProducto()->setCantidad($devolucion->getProducto()->getCantidad() + $devolucion->getCantidad());
+					$em->persist($devolucion->getProducto());
+				}
+			   
+				//$em->persist($pedido_mod);
+				//$em->persist($linea);
+				$em->persist($devolucion);
+				
+				$em->flush();
+				return $this->redirect($this->generateUrl('manage_returns_logistics'));
+			}
+		
+		}
+			
+		}
+    return $this->render('UsersBundle:Users:logistics_process_returns.html.twig',array('devolucion'=>$devolucion,'form' => $form->createView()));
+    
+	}
+
+
+
+
+
+
+}

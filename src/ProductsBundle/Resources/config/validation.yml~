@@ -1,0 +1,32 @@
+ProductsBundle\Entity\Producto:
+    properties:
+        nombre:
+            - NotBlank: ~
+            - Regex: 
+                pattern: '/(?:\/)/'
+                match: false
+                message: El nombre no puede contener el caracter /
+                
+        descripcion:
+            - NotBlank: ~
+        descripcion_es:
+            - NotBlank: ~
+        cantidad:
+            - NotBlank: ~
+            - Range:
+                min: 1
+                minMessage: El stock no puede ser cero o un número negativo
+        precio:
+            - NotBlank: ~
+            - Range:
+                min: 0
+                minMessage: El precio no puede ser un número negativo
+        descuento:
+            - NotBlank: ~
+            - Range:
+                min: 0
+                minMessage: El descuento no puede ser un número negativo
+        
+       
+               
+       

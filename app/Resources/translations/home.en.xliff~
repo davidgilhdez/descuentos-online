@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="es" datatype="plaintext" original="file.ext">
+            <body>
+            <trans-unit id="Entrar">
+                <source>Entrar</source>
+                <target>Log in</target>
+            </trans-unit>
+            <trans-unit id="Registrarse">
+                <source>Registrarse</source>
+                <target>Sign in</target>
+            </trans-unit>
+            <trans-unit id="M1">
+                <source>Ofertas exclusivas por tiempo limitado</source>
+                <target>Exclusive offers for a limited time</target>
+            </trans-unit>
+            <trans-unit id="M2">
+                <source>¡Que no se te adelanten, haz ya tu pedido!</source>
+                <target>Don't wait, make your order now!</target>
+            </trans-unit>
+            <trans-unit id="Volver">
+                <source>Volver a INICIO</source>
+                <target>Return to HOMEPAGE</target>
+            </trans-unit>
+            <trans-unit id="Administrador">
+                <source>Administrador del sitio:</source>
+                <target>Site Admin:</target>
+            </trans-unit>
+            <trans-unit id="Contacto">
+                <source>Contacto:</source>
+                <target>Contact:</target>
+            </trans-unit>
+            <trans-unit id="cerrar">
+                <source>Cerrar sesión</source>
+                <target>Log out</target>
+            </trans-unit>
+            <trans-unit id="Bienvenida">
+                <source>Bienvenid@</source>
+                <target>Welcome</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

@@ -1,27 +1,161 @@
 home:
-    path:     /
-    defaults: { _controller: UsersBundle:Users:index }
+    path:     /{_locale}
+    defaults: { _controller: UsersBundle:Index:index, _locale: es}
+    requirements:
+      _locale: en|es
     
 register:
-    path:     /register
-    defaults: { _controller: UsersBundle:Users:register }
-    
-login:
-    path:     /login
-    defaults: { _controller: UsersBundle:Users:login }
-    
+    path:     /{_locale}/register
+    defaults: { _controller: UsersBundle:Users:register, _locale: es }
+    requirements:
+      _locale: en|es
+   
 show_profile:
-    path:     /show-profile/{username}
-    defaults: { _controller: UsersBundle:Users:show }
-    
+    path:     /{_locale}/show-profile/{username}
+    defaults: { _controller: UsersBundle:Users:show, _locale: es }
+    requirements:
+      _locale: en|es
+   
 edit_profile:
-    path:     /edit-profile/{username}
-    defaults: { _controller: UsersBundle:Users:edit }
+    path:     /{_locale}/edit-profile/{username}
+    defaults: { _controller: UsersBundle:Users:edit, _locale: es }
+    requirements:
+      _locale: en|es
+    
+change_password:
+    path:     /{_locale}/change-password/{username}
+    defaults: { _controller: UsersBundle:Users:changePassw, _locale: es }
+    requirements:
+      _locale: en|es
 
 show_orders:
-    path:     /show-orders/{username}
-    defaults: { _controller: UsersBundle:Users:orders }
+    path:     /{_locale}/show-orders/{username}
+    defaults: { _controller: UsersBundle:Orders:orders, _locale: es }
+    requirements:
+      _locale: en|es
     
 show_cart:
-    path:     /show-cart/{username}
-    defaults: { _controller: UsersBundle:Users:cart }
+    path:     /{_locale}/show-cart/{username}
+    defaults: { _controller: UsersBundle:Orders:cart, _locale: es }
+    requirements:
+      _locale: en|es
+    
+show_order_products:
+    path:     /{_locale}/order/{username}/{id}
+    defaults: { _controller: UsersBundle:Orders:orderProducts, _locale: es }
+    requirements:
+      _locale: en|es
+    
+postlogin:
+    path:     /login
+    defaults: { _controller: UsersBundle:Users:login, _locale: es }
+    requirements:
+      _locale: en|es }
+    
+logout:
+    path:     /logout
+    defaults: { _controller: UsersBundle:Users:logout }
+
+addto_cart:
+    path:     /{_locale}/add-to-cart/{id_producto}
+    defaults: { _controller: UsersBundle:Orders:addtoCart, _locale: es }
+    requirements:
+      _locale: en|es }  
+    
+finish_order:
+    path:     /{_locale}/finish-order/{username}
+    defaults: { _controller: UsersBundle:Orders:finishOrder , _locale: es }
+    requirements:
+      _locale: en|es 
+    
+delete_line:
+    path:     /{_locale}/delete-line/{id}{loop}
+    defaults: { _controller: UsersBundle:Orders:deleteLine, _locale: es }
+    requirements:
+      _locale: en|es 
+    
+securelogin:
+    pattern:   /securelogin
+    defaults:  { _controller: UsersBundle:Security:login }
+    
+login_check:
+    pattern:   /login_check
+
+manage_users:
+    pattern:   /admin/manage-users
+    defaults:  { _controller: UsersBundle:Users:manageUsers }
+      
+change_user_data:
+    pattern:   /admin/change-user/{id}
+    defaults:  { _controller: UsersBundle:Users:changeUsers }
+
+error:
+    pattern:   /{_locale}/error
+    defaults:  { _controller: UsersBundle:Exception:showException, _locale: es }
+    requirements:
+      _locale: en|es
+      
+returns:
+    pattern:   /{_locale}/returns/{username}
+    defaults:  { _controller: UsersBundle:Returns:returns, _locale: es }
+    requirements:
+      _locale: en|es
+      
+return_product:
+    pattern:   /{_locale}/return-product/{username}/{id}
+    defaults:  { _controller: UsersBundle:Returns:returnProduct, _locale: es }
+    requirements:
+      _locale: en|es
+      
+returns_history:
+    pattern:   /{_locale}/returns-history/{username}
+    defaults:  { _controller: UsersBundle:Returns:returnHistory, _locale: es }
+    requirements:
+      _locale: en|es
+      
+manage_returns:
+    pattern:   /admin/manage-returns
+    defaults:  { _controller: UsersBundle:Returns:manageReturns}
+      
+process_return:
+    pattern:   /admin/process-return/{id}
+    defaults:  { _controller: UsersBundle:Returns:processReturn}
+      
+pending_orders:
+    pattern:   /logistics/pending-orders
+    defaults:  { _controller: UsersBundle:Logistics:pendingOrders}
+    
+preparing_orders:
+    pattern:   /logistics/preparing-orders/{id}
+    defaults:  { _controller: UsersBundle:Logistics:preparingOrders}
+      
+prepare_products:
+    pattern:   /logistics/prepare-products
+    defaults:  { _controller: UsersBundle:Logistics:prepareProducts }
+      
+procesed_orders:
+    pattern:   /logistics/procesed-orders
+    defaults:  { _controller: UsersBundle:Logistics:procesedOrders }
+      
+manage_returns_logistics:
+    pattern:   /logistics/manage-returns
+    defaults:  { _controller: UsersBundle:Returns:manageReturnsLogistics }
+      
+process_return_logistics:
+    pattern:   /logistics/process-return/{id}
+    defaults:  { _controller: UsersBundle:Returns:processReturnLogistics }
+      
+finishing_orders:
+    pattern:   /logistics/finishing-orders/{id}
+    defaults:  { _controller: UsersBundle:Logistics:finishingOrders }
+    
+show_label:
+    pattern:   /logistics/show-label/{id}
+    defaults:  { _controller: UsersBundle:Logistics:showLabel }
+      
+change_languaje:
+    pattern:   /change-languaje
+    defaults:  { _controller: UsersBundle:Users:changeLanguaje }
+    
+      
+

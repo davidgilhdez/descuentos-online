@@ -23,6 +23,7 @@ class Producto
      * @var string
      */
     private $descripcion;
+    private $descripcion_en;
 
     /**
      * @var float
@@ -43,15 +44,32 @@ class Producto
      * @var int
      */
     private $descuento;
+
+    /**
+     * @var string
+     */
+    private $imagen;
+    
+    private $is_active;
     
     //creo variable para la relación
-    protected $linea_pedido;
+    protected $lineas;
 
 	//constructor
 	public function __construct(){
 	$this->vendiendo = false;
+	$this->is_active = true;
 		
 	}
+
+	public function getPrecio_descuento(){
+	return round($this->precio*((100 - $this->descuento)/100),2);	
+	}
+	
+	public function getNombretoUrl(){
+	return str_replace(' ','-',	$this->nombre);
+	}
+
 
     /**
      * Get id
@@ -61,6 +79,11 @@ class Producto
     public function getId()
     {
         return $this->id;
+    }
+    
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 
     /**
@@ -98,6 +121,7 @@ class Producto
 
         return $this;
     }
+    
 
     /**
      * Get descripcion
@@ -108,6 +132,7 @@ class Producto
     {
         return $this->descripcion;
     }
+    
 
     /**
      * Set precio
@@ -199,5 +224,74 @@ class Producto
     public function getDescuento()
     {
         return $this->descuento;
+    }
+
+    /**
+     * Set imagen
+     *
+     * @param string $imagen
+     * @return Producto
+     */
+    public function setImagen($imagen)
+    {
+        $this->imagen = $imagen;
+
+        return $this;
+    }
+
+    /**
+     * Get imagen
+     *
+     * @return string 
+     */
+    public function getImagen()
+    {
+        return $this->imagen;
+    }
+
+    /**
+     * Set descripcion_en
+     *
+     * @param string $descripcionEn
+     * @return Producto
+     */
+    public function setDescripcionEn($descripcionEn)
+    {
+        $this->descripcion_en = $descripcionEn;
+
+        return $this;
+    }
+
+    /**
+     * Get descripcion_en
+     *
+     * @return string 
+     */
+    public function getDescripcionEn()
+    {
+        return $this->descripcion_en;
+    }
+
+    /**
+     * Set is_active
+     *
+     * @param boolean $isActive
+     * @return Producto
+     */
+    public function setIsActive($isActive)
+    {
+        $this->is_active = $isActive;
+
+        return $this;
+    }
+
+    /**
+     * Get is_active
+     *
+     * @return boolean 
+     */
+    public function getIsActive()
+    {
+        return $this->is_active;
     }
 }

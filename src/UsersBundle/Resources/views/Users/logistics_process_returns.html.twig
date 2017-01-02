@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h2> {% trans from "formularios" %}Procesar Devolución{% endtrans %} </h2>
+
+	<div id="ver_perfil">
+	<div id="margen">
+	<ul>
+		<li>Id: <span class="texto">{{devolucion.id}}</span></li>
+		<li>Fecha: <span class="texto">{{devolucion.fecha}}</span></li>
+		<li>Usuario: <span class="texto">{{devolucion.usuario.getNombre()}} {{devolucion.usuario.getApellidos()}}</span></li>
+		<li>Producto: <span class="texto">{{devolucion.producto.getNombre()}}</span></li>
+		<li>Tipo: <span class="texto">{{devolucion.tipo}}</span></li>
+		<li>Observaciones: <br><span class="texto">{{devolucion.observaciones}}</span></li>
+		
+		<li>Resolución:</li>
+		{{form_start(form)}}
+		{{form_widget(form.resolucion)}}
+		{% if devolucion.tipo == "Reemplazo" %}		
+		{{form_widget(form.astock, {'attr': {'style': 'display: none'}})}}
+		{% else %}
+		<li>El producto entra a stock:</li>
+		{{form_widget(form.astock, {'attr': {'required': 'required'}})}}
+		{% endif %}
+		<br>
+		{{form_widget(form.procesar)}}
+		{{form_end(form)}}
+	</div>		
+		</div>
+
+{% endblock %}
+

@@ -8,10 +8,21 @@ UsersBundle\Entity\Linea_pedido:
             joinColumn:
                 name: pedido_id
                 referencedColumnName: id
-            cascade: ["persist"]
-    oneToOne:
-        pedido:
-            targetEntity: UsersBundle\Entity\Pedido
+    
+        producto:
+            targetEntity: ProductsBundle\Entity\Producto
+            joinColumn:
+                name: producto_id
+                referencedColumnName: id
+        usuario:
+            targetEntity: Usuario
+            joinColumn:
+                name: usuario_id
+                referencedColumnName: id
+         
+        oneToMany:
+        devoluciones:
+            targetEntity: Devolucion
             mappedBy: linea_pedido
     repositoryClass: UsersBundle\Repository\Linea_pedidoRepository
     id:

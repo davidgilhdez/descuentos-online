@@ -1,0 +1,7 @@
+{% if prueba == null %}
+Es null
+{% else %}
+Es otra cosa
+{% endif %}
+
+{{prueba}}

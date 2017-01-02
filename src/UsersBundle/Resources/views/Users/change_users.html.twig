@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h2> {% trans from "formularios" %}Modificar Usuarios{% endtrans %} </h2>
+{{form_start(form)}}
+	<div id="ver_perfil">
+	<div id="margen">
+	<ul>
+		<li>Id: <span class="texto">{{user.id}}</span></li>
+		<li>Username: <span class="texto">{{user.username}}</span></li>
+		<li>{% trans from "tablas" %}Rol{% endtrans %}: </li>
+		<li>
+		
+		 <input type="radio" name="rol" value="ROLE_ADMIN"
+		 {% if user.roles[0]=="ROLE_ADMIN" %}
+		 checked
+		 {% endif %}
+		 ><span>{% trans from "tablas" %}Administrador{% endtrans %}</span>
+		 <input type="radio" name="rol" value="ROLE_USER"
+		 {% if user.roles[0]=="ROLE_USER" %}
+		 checked
+		 {% endif %}><span>{% trans from "tablas" %}Usuario{% endtrans %}</span>
+		<input type="radio" name="rol" value="ROLE_LOGISTICS"
+		 {% if user.roles[0]=="ROLE_ADMIN" %}
+		 checked
+		 {% endif %}
+		 ><span>{% trans from "tablas" %}Trabajador{% endtrans %}</span>
+		 </li>
+		
+		
+		</li>
+		<li>{% trans from "tablas" %}Activo{% endtrans %}: 
+		{% if user.getIsActive %}
+			<td><span class="texto">{% trans from "tablas" %}Si {% endtrans %}</span></td>
+			{% else %}
+			<td><span class="texto">No</span></td>
+			{% endif %}
+		</li>
+		<li>
+		<span>{% trans from "formularios" %}Marcar como inactivo{% endtrans %}</span> <input type="checkbox" name="inactivo"
+		{% if user.getIsActive == false %}
+		checked>
+		{% endif %}
+		</li>
+	</ul>
+	{{form_end(form)}}
+	
+	</div>		
+		</div>
+
+{% endblock %}

@@ -1,20 +1,29 @@
 add_product:
-    path:     /add-product
+    path:     /admin/add-product
     defaults: { _controller: ProductsBundle:Products:addProduct }
     
 edit_product:
-    path:     /edit-product/{id}
-    defaults: { _controller: ProductsBundle:Products:editProduct }
-
+    path:     /admin/edit-product/{id}
+    defaults: { _controller: ProductsBundle:Products:editProduct}
+   
 show_product:
-    path:     /show-product/{id}
-    defaults: { _controller: ProductsBundle:Products:showProduct }
+    path:     /{_locale}show-product/{product_name}
+    defaults: { _controller: ProductsBundle:Products:showProduct, _locale: es }
+    requirements:
+      _locale: en|es
     
 delete_product:
-    path:     /delete-product/{id}
+    path:     /admin/delete-product/{id}
     defaults: { _controller: ProductsBundle:Products:deleteProduct }
     
 manage_products:
-    path:     /manage-products/
-    defaults: { _controller: ProductsBundle:Products:manageProduct }
+    path:     /admin/manage-products/
+    defaults: { _controller: ProductsBundle:Products:manageProduct}
     
+sell_product:
+    path:     /admin/sell-product/{id}
+    defaults: { _controller: ProductsBundle:Products:sellProduct }
+    
+quit_sell_product:
+    path:     /admin/quit-sell-product/{id}
+    defaults: { _controller: ProductsBundle:Products:quitSellProduct }

@@ -2,6 +2,49 @@
 
 {% block body %}
 
-Página de productos en pedido
+<h2> {% trans from "tablas" %}Pedido {% endtrans %} Nº {{lineas[0].pedido.getId()}}</h2>
+{% if lineas[0].getPedido().getIsdevolucion %}
+				<h3>{% trans from "tablas" %}(Reemplazo){% endtrans %}</h3>
+				{% endif %}
+<div id="tabla">
+	<table>
+		<tr>
+			<th></th>
+			<th>{% trans from "tablas" %}Artículo{% endtrans %}</th>
+			<th>{% trans from "tablas" %}Cantidad{% endtrans %}</th>
+			<th>{% trans from "tablas" %}Importe{% endtrans %}</th>
+		</tr>
+		
+		{% for linea in lineas %}
+		{% if linea.cantidad != 0%}
+		<tr>
+			<td><img src="{{linea.getProducto().getImagen()}}" width=50px height=50px</td>
+			<td>{{linea.producto.nombre}}</td>
+			<td>{{linea.getCantidad()}}</td>
+			<td>{{linea.Importe()}} €</td>
+		</tr>	
+		{% endif %}
+		{% endfor %}
+			
+	</table>		
+	<div id="total">Total: {{lineas[0].pedido.getImporte()}} € </div>
+	{%if app.session.get('rol') == "ROLE_LOGISTICS" %}
+		{%if lineas[0].pedido.getEstado() == "Pendiente" %}	
+			<div id="logistica_verpedido">
+			<a href="{{path('preparing_orders',{id:lineas[0].pedido.id})}}"><h3>Preparar</h3></a></div>
+		{% elseif lineas[0].pedido.getEstado() == "Preparando" %}
+		<div id="logistica_verpedido">
+		
+		<a href="javascript:void(0);" onclick="javascript:window.open(
+		'{{path('finishing_orders',{id:lineas[0].pedido.id})}}', '_blank'); 
+		window.open('{{path('pending_orders')}}', '_self'); "><h3>Finalizar</h3></a></div>
+		{% endif %}
+	{% endif %}
+</div>
+	
+		
+		
 
 {% endblock %}
+
+

@@ -1,0 +1,22 @@
+<div id="nav">
+	<div id="bienvenida">
+		{% trans from "home" %}Bienvenid@ {% endtrans %} {{app.session.get('username')}}
+	</div>
+	
+	<div id="menu_derecho">
+	<ul>
+		<li><a href="{{path('pending_orders')}}">
+		{% trans from "user_menu" %}Pedidos pendientes{% endtrans %}</a></li>
+		<li><a href="{{path('procesed_orders')}}">
+		{% trans from "user_menu" %}Pedidos procesados{% endtrans %}</a></li>
+		<li><a href="{{path('show_cart',{username : app.session.get('username')})}}">
+		{% trans from "user_menu" %}Devoluciones{% endtrans %}</a></li>
+		
+		<li><a href="{{path('logout')}}">{% trans from "home" %} Cerrar sesión{% endtrans %}</a></li>
+	</ul>
+	</div>
+		
+	
+		
+			
+</div>

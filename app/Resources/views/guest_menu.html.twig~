@@ -1,11 +1,11 @@
 <div id="nav">
 	<ul>
-		{{form_start(form)}}
-		<li>Username{{form_widget(form.username)}}</li>
-		<li>Password{{form_widget(form.password)}}</li>
-		<li>{{form_widget(form.entrar)}}</li>
-		<li><a href="{{path('/register')}}">Registrarse</a></li>
-		{{ form_end(form) }}
+		<form action="{{ path('login_check') }}" method="post">
+		<li>Username<input type="text" id="username" name="_username" /></li>
+		<li>Password<input type="password" id="password" name="_password" /></li>
+		<li><button type="submit">{% trans from "home" %}Entrar{% endtrans %}</button></li>
+		<li><a href="{{path('register')}}">{% trans from "home" %}Registrarse{% endtrans %}</a></li>
+		</form>
 	</ul>
 			
 </div>

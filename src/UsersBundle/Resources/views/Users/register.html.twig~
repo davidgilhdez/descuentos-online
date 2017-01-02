@@ -1,20 +1,24 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-	<h2> Registro de Nuevo Usuario </h2>
+	<h2> {% trans from "formularios" %} Registro de Nuevo Usuario {% endtrans %}</h2>
 	
-	<div id="form_usuario">
+	<div id="forms">
 	<ul>
-		{{form_start(form)}}
+		{{form_start(form,{'attr': {'id':'registro'}})}}
 		<li>Username</br>{{form_widget(form.username)}}</li>
+		<div class="error_validacion">{{form_errors(form.username)}}</div>
 		<li>Password</br>{{form_widget(form.password)}}</li>
-		<li>Nombre</br>{{form_widget(form.nombre)}}</li>
-		<li>Apellidos</br>{{form_widget(form.apellidos)}}</li>
-		<li>Dirección</br>{{form_widget(form.direccion)}}</li>
-		<li>Población</br>{{form_widget(form.ciudad)}}</li>
-		<li>Código Postal</br>{{form_widget(form.cp)}}</li>
+		<div class="error_validacion">{{form_errors(form.password)}}</div>
+		<li>{% trans from "formularios" %}Repite {% endtrans %} Password</br>{{form_widget(form.repassword)}}</li>
+		<li>{% trans from "formularios" %}Nombre{% endtrans %}</br>{{form_widget(form.nombre)}}</li>
+		<li>{% trans from "formularios" %}Apellidos{% endtrans %}</br>{{form_widget(form.apellidos)}}</li>
+		<li>{% trans from "formularios" %}Dirección{% endtrans %}</br>{{form_widget(form.direccion)}}</li>
+		<li>{% trans from "formularios" %}Población{% endtrans %}</br>{{form_widget(form.ciudad)}}</li>
+		<li>{% trans from "formularios" %}Código Postal{% endtrans %}</br>{{form_widget(form.cp)}}</li>
 		<li>Teléfono</br>{{form_widget(form.telefono)}}</li>
 		<li>Email</br>{{form_widget(form.email)}}</li>
+		<div class="error_validacion">{{form_errors(form.email)}}</div>
 		</br>
 		<li>{{form_widget(form.nuevo_usuario)}}</li>
 
@@ -25,3 +29,8 @@
 
 {% endblock %}
 
+{% block javascripts %}
+
+
+
+{% endblock %}

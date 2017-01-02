@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h2> {% trans from "tablas" %}Administrar Usuarios {% endtrans %}</h2>
+
+	<div id="tabla">
+	<table>
+		<tr>
+			<th>Id</th>
+			<th>Username</th>
+			<th>{% trans from "tablas" %}Rol{% endtrans %}</th>
+			<th>{% trans from "tablas" %}Activo{% endtrans %}</th>
+			<th>{% trans from "tablas" %}Acciones{% endtrans %}</th>
+			
+			
+		</tr>
+	{% for user in users %}
+		<tr>
+			<td>{{user.id}}</td>
+			<td>{{user.username}}</td>
+			{% if user.roles[0] == "ROLE_ADMIN" %}
+			<td>{% trans from "tablas" %}Administrador{% endtrans %}</td>
+			{% elseif user.roles[0] == "ROLE_USER" %}
+			<td>{% trans from "tablas" %}Usuario{% endtrans %}</td>
+			{% elseif user.roles[0] == "ROLE_LOGISTICS" %}
+			<td>{% trans from "tablas" %}Trabajador{% endtrans %}</td>
+			{% endif %}
+			{% if user.getIsActive %}
+			<td>Si </td>
+			{% else %}
+			<td>No</td>
+			{% endif %}
+			<td>
+			<a href="{{path('change_user_data',{id : user.id})}}">{% trans from "tablas" %}(Modificar){% endtrans %}</a>
+			</td>
+			
+		</tr>	
+		
+		{% endfor %}
+	</table>
+	
+	
+		</div>
+
+{% endblock %}

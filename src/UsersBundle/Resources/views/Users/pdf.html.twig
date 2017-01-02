@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}descuentos-online.com{% endblock %}</title>
+        {% block stylesheets %}<link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}" />{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        
+    </head>
+    <body>
+    <div id="pdf">
+    <br>
+    <br>
+	<div id="titulo">www.descuentos-online.com</div><br>
+	<br>
+	<hr><hr>
+	
+	<br>
+	<div id="cuerpo_pdf">
+	<b>Ref. Pedido:</b> {{ pedido.id }}<br>
+	<br>
+	
+	
+	<b>Destinatario:</b><br>
+	 - {{pedido.usuario.getNombre()}} {{pedido.usuario.getApellidos()}}<br>
+	 - {{pedido.usuario.getDireccion()}}<br>
+	 - {{pedido.usuario.getCp()}} - {{pedido.usuario.getCiudad()}}<br>
+	<br>
+	
+	
+	<b>Fecha salida:</b> {{ pedido.getFechaSalida() }}<br>
+	<br>
+	
+	
+	
+	</div>
+	<hr><hr>
+	</div>
+	</body>
+</html>

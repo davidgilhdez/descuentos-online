@@ -1,0 +1,195 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="es" datatype="plaintext" original="file.ext">
+            <body>
+            <trans-unit id="m_pedidos">
+                <source>Mis Pedidos</source>
+                <target>My Orders</target>
+            </trans-unit>
+            <trans-unit id="m_carrito">
+                <source>Mi Carrito</source>
+                <target>My Cart</target>
+            </trans-unit>
+            <trans-unit id="m_pedido">
+                <source>Pedido</source>
+                <target>Order</target>
+            </trans-unit>
+            <trans-unit id="m_adminusers">
+                <source>Administrar Usuarios</source>
+                <target>Manage Users</target>
+            </trans-unit>
+            <trans-unit id="m_gestprod">
+                <source>Gestión de Productos</source>
+                <target>Manage Products</target>
+            </trans-unit>
+            <trans-unit id="m_eliminar">
+                <source>Eliminar Producto</source>
+                <target>Delete Product</target>
+            </trans-unit>
+            <trans-unit id="m_eliminar_pregunta">
+                <source>¿Está seguro de que quiere eliminar el producto?</source>
+                <target>Are you sure you want to delete the product?</target>
+            </trans-unit>
+            <trans-unit id="m_devoluciones">
+                <source>Devoluciones</source>
+                <target>Returns</target>
+            </trans-unit>
+            <trans-unit id="m_devoluciones_historial">
+                <source>Historial de Devoluciones</source>
+                <target>Returns History</target>
+            </trans-unit>
+            
+            
+            <trans-unit id="referencia">
+                <source>Referencia</source>
+                <target>Reference</target>
+            </trans-unit>
+             <trans-unit id="fecha">
+                <source>Fecha</source>
+                <target>Date</target>
+            </trans-unit>
+            <trans-unit id="articulos">
+                <source>Artículos</source>
+                <target>Items</target>
+            </trans-unit>
+            <trans-unit id="importe">
+                <source>Importe</source>
+                <target>Amount</target>
+            </trans-unit>
+            <trans-unit id="ver_productos">
+                <source>Ver productos</source>
+                <target>View products</target>
+            </trans-unit>
+            
+            
+            
+            <trans-unit id="articulo">
+                <source>Artículo</source>
+                <target>Product</target>
+            </trans-unit>
+            <trans-unit id="cantidad">
+                <source>Cantidad</source>
+                <target>Quantity</target>
+            </trans-unit>
+            <trans-unit id="finalizar">
+                <source>Finalizar compra</source>
+                <target>Complete purchase</target>
+            </trans-unit>
+            <trans-unit id="seguircompra">
+                <source>Seguir comprando</source>
+                <target>Keep buying</target>
+            </trans-unit>
+            <trans-unit id="carrito_vacio">
+                <source>Tu carrito está vacío</source>
+                <target>Your cart is empty</target>
+            </trans-unit>
+            <trans-unit id="rol">
+                <source>Rol</source>
+                <target>Role</target>
+            </trans-unit>
+            <trans-unit id="activo">
+                <source>Activo</source>
+                <target>Active</target>
+            </trans-unit>
+            <trans-unit id="acciones">
+                <source>Acciones</source>
+                <target>Actions</target>
+            </trans-unit>
+            <trans-unit id="modificar">
+                <source>(Modificar)</source>
+                <target>(Modify)</target>
+            </trans-unit>
+            <trans-unit id="admin">
+                <source>Administrador</source>
+                <target>Administrator</target>
+            </trans-unit>
+            <trans-unit id="user">
+                <source>Usuario</source>
+                <target>User</target>
+            </trans-unit>
+            <trans-unit id="si">
+                <source>Si</source>
+                <target>Yes</target>
+            </trans-unit>
+            <trans-unit id="nombre">
+                <source>Nombre</source>
+                <target>Product Name</target>
+            </trans-unit>
+            
+            
+            
+            <trans-unit id="codigo">
+                <source>Código</source>
+                <target>Code</target>
+            </trans-unit>
+            <trans-unit id="eliminar">
+                <source>Eliminar</source>
+                <target>Delete</target>
+            </trans-unit>
+           <trans-unit id="editar">
+                <source>Editar</source>
+                <target>Edit</target>
+            </trans-unit>
+            <trans-unit id="quitar">
+                <source>Quitar oferta</source>
+                <target>Remove supply</target>
+            </trans-unit>
+            <trans-unit id="venta">
+                <source>Poner a la venta</source>
+                <target>Put on sale</target>
+            </trans-unit>
+            
+            
+            <trans-unit id="stock_mayor">
+                <source>No puede eliminar un producto con stock mayor a cero</source>
+                <target>You can't delete a product with stock greater than zero</target>
+            </trans-unit>
+            
+            <trans-unit id="dias_dev">
+                <source>Dispone de 50 días para efectuar sus devoluciones</source>
+                <target>You have 50 days to make your returns</target>
+            </trans-unit>
+            <trans-unit id="historial_dev">
+                <source>Historial de devoluciones</source>
+                <target>Returns history</target>
+            </trans-unit>
+            <trans-unit id="reemplazo">
+                <source>(Reemplazo)</source>
+                <target>(Replacement)</target>
+            </trans-unit>
+            <trans-unit id="devolver">
+                <source>Devolver</source>
+                <target>Return</target>
+            </trans-unit>
+            <trans-unit id="tipo">
+                <source>Tipo</source>
+                <target>Type</target>
+            </trans-unit>
+            <trans-unit id="estado">
+                <source>Estado</source>
+                <target>Status</target>
+            </trans-unit>
+            <trans-unit id="tramitada">
+                <source>Tramitada</source>
+                <target>Processed</target>
+            </trans-unit>
+            <trans-unit id="no_tramitada">
+                <source>Sin tramitar</source>
+                <target>Without processing</target>
+            </trans-unit>
+            <trans-unit id="rechazada">
+                <source>Rechazada</source>
+                <target>Rejected</target>
+            </trans-unit>
+            <trans-unit id="pendiente">
+                <source>Pendiente</source>
+                <target>Pending</target>
+            </trans-unit>
+            
+            
+      
+      
+      
+        </body>
+    </file>
+</xliff>

@@ -1,0 +1,50 @@
+UsersBundle\Entity\Usuario:
+    properties:
+        username:
+            - NotBlank: ~
+            - Length:
+                min: 5
+                max: 15
+                minMessage: El username debe tener un mínimo de 5 caracteres 
+                maxMessage: El username debe tener un máximo de 15 caracteres 
+            - Regex: 
+                pattern: '/\W+/'
+                match: false
+                message: El username sólo puede contener caracteres alfanuméricos
+        password:
+            - NotBlank: ~
+            - Length:
+                min: 8
+
+                minMessage: El password debe tener un mínimo de 8 caracteres 
+               
+        nombre:
+            - NotBlank: ~
+        apellidos:
+            - NotBlank: ~
+        direccion:
+            - NotBlank: ~
+        ciudad:
+            - NotBlank: ~
+        cp:
+            - NotBlank: ~
+            - Length:
+                min: 5
+                max: 5
+                minMessage: El código postal no es correcto
+                maxMessage: El código postal no es correcto
+            
+        telefono:
+            - NotBlank: ~
+            - Length:
+                min: 9
+                max: 9
+                minMessage: El nº de teléfono no es correcto
+                maxMessage: El nº de teléfono no es correcto
+            
+        email:
+            - Email:
+                message: Introduzca un email válido
+                
+
+        

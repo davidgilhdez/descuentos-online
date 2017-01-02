@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h2> {% trans from "tablas" %}Preparar Productos{% endtrans %} </h2>
+
+<div id="tabla">
+
+	<table>
+		<tr>
+			<th></th>
+			<th>{% trans from "tablas" %}Producto{% endtrans %}</th>
+			<th>{% trans from "tablas" %}Cantidad{% endtrans %}</th>
+		
+		</tr>
+		
+		{% for linea in lineas %}
+		<tr>
+				<td><img src="{{linea.producto.getImagen()}}" width=50px height=50px</td>
+				<td>{{linea.producto.getNombre()}}</td>
+				
+				<td>{{linea.cantidad}}</td>
+				
+				
+				
+		</tr>
+			
+		{% endfor %}
+			
+	</table>		
+	<div id="logistica_verpedido">
+			<a href="{{path('pending_orders')}}"><h3>Volver</h3></a></div>
+		
+</div>
+	
+		
+		
+
+{% endblock %}

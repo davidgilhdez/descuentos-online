@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h2> {% trans from "tablas" %}Gestionar Devoluciones{% endtrans %} </h2>
+
+<div id="tabla">
+{% if devoluciones == null %}
+<h4>No hay devoluciones por tramitar</h4>
+{% else %}
+ 
+	<table>
+		<tr>
+			<th>{% trans from "tablas" %}ID{% endtrans %}</th>
+			<th>{% trans from "tablas" %}Fecha{% endtrans %}</th>
+			<th>{% trans from "tablas" %}Pedido{% endtrans %}</th>
+			<th>{% trans from "tablas" %}Usuario{% endtrans %}</th>
+			<th>{% trans from "tablas" %}Artículo{% endtrans %}</th>
+			<th>{% trans from "tablas" %}Resolución{% endtrans %}</th>
+			
+			<th>{% trans from "tablas" %}Tipo{% endtrans %}</th>
+			<th>{% trans from "tablas" %}Estado{% endtrans %}</th>
+			
+		</tr>
+		{% for devolucion in devoluciones %}
+		
+		<tr>
+			<td>{{devolucion.id}}</td>
+			<td> {{devolucion.fecha}}</td>
+			<td><a href="{{path('show_order_products',{username: devolucion.usuario.getUsername(),id:devolucion.getLineaPedido().getPedido().getId()})}}">
+			{{devolucion.getLineaPedido().getPedido().getId()}} </td>
+			<td>{{devolucion.usuario.getNombre()}} {{devolucion.usuario.getApellidos()}}</td>
+			<td>{{devolucion.producto.getNombre()}} ({{devolucion.cantidad}})</td>
+			<td>{{devolucion.resolucion}}</td>
+			<td>
+			{% if devolucion.tipo == "Reembolso" %}			
+			Reembolso ({{devolucion.importe}} €)</td>
+			{% else %}
+			Reemplazo
+			{% endif %}
+			<td>
+			{% if devolucion.resolucion == "-" %}
+			<a href="{{path('process_return_logistics',{id:devolucion.id})}}"> {{devolucion.estado}}</a>
+			{% else %}	
+			{{devolucion.estado}}
+			{% endif %}
+			</td>
+		
+		</tr>
+	
+			{% endfor %}
+	</table>		
+{% endif %}		
+</div>
+	
+		
+		
+
+{% endblock %}

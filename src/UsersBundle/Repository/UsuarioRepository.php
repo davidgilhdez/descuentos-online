@@ -12,12 +12,5 @@ use Doctrine\ORM\EntityRepository;
  */
 class UsuarioRepository extends EntityRepository
 {
-	public function login($username,$password){
-		return $this->getEntityManager()
-            ->createQuery('SELECT u.username,u.password FROM UsersBundle:Usuario u WHERE (u.username = :username AND
-             u.password = :password')->setParameters(array(
-   			 ':username' => $username,
-   			 ':password' => $password))->getArrayResult();
 	
-	}
 }

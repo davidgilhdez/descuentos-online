@@ -1,10 +1,18 @@
 UsersBundle\Entity\Usuario:
     type: entity
     table: usuario
+    indexes:
+      username_index:
+        columns: [ username ]
     oneToMany:
         pedidos:
             targetEntity: Pedido
             mappedBy: usuario
+            
+        devoluciones:
+            targetEntity: Devolucion
+            mappedBy: usuario
+            
     repositoryClass: UsersBundle\Repository\UsuarioRepository
     id:
         id:
@@ -34,12 +42,18 @@ UsersBundle\Entity\Usuario:
         email:
             type: string
             length: '100'
-        admin:
-            type: boolean
+        roles:
+            type: string
+            length: '100'
         username:
             type: string
             length: '100'
         password:
             type: string
             length: '100'
+        salt:
+            type: string
+            length: '100'
+        is_active:
+            type: boolean
     lifecycleCallbacks: {  }

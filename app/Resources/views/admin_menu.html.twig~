@@ -1,13 +1,16 @@
 <div id="nav">
 	<div id="bienvenida">
-		Bienvenid@ {{app.session.get('username')}} (ADMINISTRADOR)
+		{% trans from "home" %}Bienvenid@ {% endtrans %} {{app.session.get('username')}}
+		 {% trans from "admin_menu" %}(ADMINISTRADOR){% endtrans %}
 	</div>
 	
 	<div id="menu_derecho">
 	<ul>
-		<li><a href="{{path('show_profile',{username : app.session.get('username')})}}">Nuevo producto</a></li>
-		<li><a href="{{path('show_orders',{username : app.session.get('username')})}}">Gestionar productos</a></li>
-		<li><a href="{{path('show_cart',{username : app.session.get('username')})}}">Mi carrito</a></li>
+		<li><a href="{{path('add_product')}}">{% trans from "admin_menu" %}Nuevo producto{% endtrans %}</a></li>
+		<li><a href="{{path('manage_products')}}">{% trans from "admin_menu" %}Gestionar productos{% endtrans %}</a></li>
+		<li><a href="{{path('manage_users')}}">{% trans from "admin_menu" %}Administrar usuarios{% endtrans %}</a></li>
+		<li><a href="{{path('manage_returns')}}">{% trans from "admin_menu" %}Gestionar devoluciones{% endtrans %}</a></li>
+		<li><a href="{{path('logout')}}">{% trans from "home" %}Cerrar sesión{% endtrans %}</a></li>
 	</ul>
 	</div>
 		
